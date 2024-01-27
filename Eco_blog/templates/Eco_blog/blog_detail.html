@@ -1,0 +1,39 @@
+{% extends "Eco_app/base.html" %} {% load static %} {% block content %}
+<div class="blog-detail-container">
+  <div class="blog-detail-wrapper">
+    <div class="blog-detail">
+      <div class="blog-detail-image">
+        <img src="{{blog.image.url }}" alt="" />
+        <p style="padding: 15px 0 0 20px">Author: {{ blog.author }}</p>
+      </div>
+
+      <div class="blog-detail-content">
+        <h1>{{ blog.title }}</h1>
+
+        <p class="text-description">{{ blog.content }}</p>
+        <span>{{ blog.date_bloged }}</span>
+      </div>
+    </div>
+    <div class="blog-detail-recent-blogs">
+      <h2>Recent Blogs</h2>
+      <div class="recent-blogs">
+        
+        {% for recent_blog in recent_blogs %}
+        <div class="recent-blog">
+          <div class="recent-blog-image">
+            <img src="{{ recent_blog.image.url }}" alt="" />
+          </div>
+
+          <div class="recent-blog-content">
+            <a href="{% url 'blog-detail' recent_blog.get_blog_url recent_blog.id  %}">{{ recent_blog.title }}</a>
+            <p>Author: {{ recent_blog.author }}</p>
+            <span>{{ recent_blog.date_bloged }}/span>
+          </div>
+        </div>
+        {% endfor %}
+        
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

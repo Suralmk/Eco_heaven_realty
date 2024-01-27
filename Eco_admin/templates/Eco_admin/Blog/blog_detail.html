@@ -1,0 +1,26 @@
+{% extends "Eco_admin/staff.html" %} {% load static %} {% block content %}
+<div class="staff-blog-detail-container">
+  <div class="staff-blog-detail-wrapper">
+    <div class="staff-blog-detail-title">
+      <h1>{{ blog.title }}</h1>
+    </div>
+    <div class="staff-blog-detail">
+      <div class="staff-blog-detail-image">
+        <img src="{{blog.image.url  }}" alt="" />
+      </div>
+      <div class="staff-blog-detail-content">
+        <h1 class="text-description">{{ blog.content }}</h1>
+        <p class="text-description">Author: {{ blog.title }}</p>
+        <span>{{ blog.date_bloged }}</span>
+      </div>
+    </div>
+
+    <div class="staff-blog-detail-buttons">
+      <a href="{% url 'admin-blog-update' blog.id %}">Edit This Blog</a>
+      <a href="{% url 'admin-blog-delete' blog.id %}" class="delete-link-blog"
+        >Delete This Blog</a
+      >
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,369 @@
+.homes-list-container {
+    margin-top: 30px;
+}
+.homes-list {
+    padding-top: 20px;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.homes-list-home  {
+    background: white;
+    height: 350px;
+    padding-top: 20px ;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-radius: 10px;
+}
+.home-details {
+    padding: 0 15px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.home-details p  {
+    font-size: 18px;
+}
+.home-details p span {
+    font-weight: bold;
+}
+.home-location-and-type {
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center
+}
+.home-type {
+    padding: 7px 20px;
+    background: black;
+    color: white;
+    border-radius: 10px;
+}
+.home-location {
+    display: flex;
+    gap: 15px;
+}
+.home-location p {
+    font-weight: bold;
+    font-size: 18px;
+}
+.home-price {
+    padding: 0 15px;
+}
+.home-price span {
+    font-weight: bold;
+}
+.home-image {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 10px;
+    position: relative;
+}
+
+.home-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.4s;
+}
+.home-image .staff-content-link {
+    position: absolute;
+    bottom: 20px;
+    left: 15px;
+    z-index: 5;
+}
+.home-list-detail-link:hover img {
+    transform: scale(1.1);
+}
+.home-list-detail-link  {
+    color:black;
+}
+
+
+/*-------------------------------------
+        Staf Home Deatil 
+---------------------------------------*/
+.staff-home-detail-container {
+    margin-top: 30px;
+}
+
+.staff-home-detail-images {
+    margin-top: 10px;
+    padding-top: 20px;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.staff-home-detail-image  {
+    background: white;
+    height: 350px;
+    position: relative;
+}
+
+.staff-home-detail-image-cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    gap: 10px;
+    align-items:end;
+    padding: 20px;   
+}
+.staff-home-detail-image-cover a {
+    opacity: 0;
+    transition:all 0.5s;
+}
+
+.staff-home-detail-image-cover:hover a {
+    opacity: 1;
+}
+.staff-home-detail-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.staff-home-detail-location{
+    margin-bottom: 30px;
+}
+.staff-home-detail-location::after{
+    content:" ";
+    width: 100px;
+    height: 2px;
+    background: black;
+    display: inline-flex;
+}
+
+.staff-home-detail-content {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+}
+.staff-home-detail-info {
+    width: 40%;
+}
+.staff-home-detail-info ul {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+.staff-home-detail-info ul li {
+    display: flex;
+    justify-content: space-between;
+}
+.staff-home-detail-info ul li p:nth-of-type(1){
+    font-weight: bolder;
+}
+.staff-home-detail-description {
+    width: 60%;
+}
+.staff-home-detail-description h2 {
+    margin-bottom: 20px;
+}
+.staff-home-detail-description h2::after {
+    content:" ";
+    width: 100px;
+    height: 2px;
+    background: black;
+    display: block;
+    margin-top: 15px;
+}
+.text {
+    color: #313131;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 25px;
+    text-align: justify;
+}
+
+.staff-home-detail-buttons {
+    margin-top: 50px;
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.staff-home-detail-buttons a{
+    padding: 15px 30px;
+    background: black;
+    color: white;
+    transition: 0.5s;
+}
+.staff-home-detail-buttons .delete-link-home{
+    background: rgb(201, 10, 10);
+}
+.staff-home-detail-buttons a:hover{
+    opacity: 0.6;
+}
+@media screen and  (max-width:900px){
+    .staff-home-detail-content {
+        flex-direction: column;
+    }
+    .staff-home-detail-info {
+        width: 100%;
+    }
+    .staff-home-detail-description {
+        width: 100%;
+    }
+}
+@media screen and  (max-width:700px){
+    .staff-home-detail-buttons {
+        flex-direction: column;
+        gap: 20px;
+        justify-content: start;
+        align-items: start;
+    }
+}
+
+/*--------------------------------------
+            Staff Add Homes 
+---------------------------------------*/
+
+.staff-home-create-container {
+    margin-top: 30px;
+}
+
+.staff-home-create-form-container {
+    margin-top: 20px;
+}
+.staff-home-create-form-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding:30px ;
+    align-items: start;
+    background: white;
+}
+.input-field-home-flex {
+    display: flex;
+    width: 100%;
+    gap: 50px;
+}
+.input-field-home {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+}
+.input-field-home label::after {
+    content: "*";
+    font-size: 18px;
+    display: inline-flex;
+    color: red;
+    margin-left: 5px;
+}
+.input-field-home .input{
+    border: 1px solid rgba(0, 0, 0, 0.251);
+    outline: none;
+    padding: 12px 15px;
+    background: white;
+}
+.input-field-home  .invalid{
+    border: 1px solid rgb(255, 0, 0);
+}
+.input-field-home input:focus{
+    border: 1px solid #000000d8;
+}
+.error input {
+    border: 1px solid red;
+}
+.error #error-message {
+    color: red;
+    font-size: 14px;
+}
+.staff-home-create-form-container button {
+    margin: 15px 0 0 0 ;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    background: black;
+    color: white;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance:textfield;
+}
+
+#home_image_select::after {
+    display: none;
+}
+.staff-home-add-image-select {
+    margin: 15px 0 0 0 ;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    padding: 12px 15px;
+    background: black;
+    color: white;
+    transition: 0.5s;
+}
+.staff-home-add-image-select:hover {
+    background: rgba(0, 0, 0, 0.616);
+}
+#uploaded-image-preview {
+    display: none;
+}
+.show-uploaded-image {
+    width: 100%;
+    max-height: 700px;
+    overflow: hidden;
+}
+
+.show-uploaded-image  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media screen and  (max-width:600px){
+    .input-field-home-flex {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .staff-home-create-form-container form {
+        padding: 15px;
+    }
+
+}
+/*--------------------------------------
+            Staff Homes Update
+---------------------------------------*/
+
+
+/*--------------------------------------
+            Staff Add Many Homes
+---------------------------------------*/
+
+.show-uploaded-images {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.show-uploaded-images div {
+    height: auto;
+    width: 100%;
+}
+.show-uploaded-images div img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

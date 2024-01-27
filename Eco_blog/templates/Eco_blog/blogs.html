@@ -1,0 +1,37 @@
+{% extends "Eco_app/base.html" %} {% load static %} {% block content %}
+<div class="blog-list-container">
+  <div class="blog-list-wrapper">
+    <div class="blog-list-header">
+      <h1>Blogs</h1>
+      <p class="text-description">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique,
+        quibusdam vitae voluptates nemo omnis quam a impedit eum facere quis
+        illo officia distinctio, doloremque natus repudiandae assumenda corrupti
+        placeat eius? Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+        Consequuntur doloribus quis cum praesentium illum soluta vel suscipit
+        nulla, quam impedit facilis sed velit doloremque nesciunt voluptates.
+        Fuga, optio id! Id.
+      </p>
+    </div>
+
+    <div class="blog-list">
+      {% for blog in blogs %}
+      <div class="blog">
+        <div class="blog-image">
+          <img src="{{ blog.image.url }}" alt="" />
+        </div>
+        <div class="div">
+          <div class="blog-content">
+            <a href="{% url 'blog-detail' blog.get_blog_url  blog.id   %}"
+              >{{ blog.title }}</a
+            >
+            <p>Author: {{ blog.author }}</p>
+            <p>{{ blog.date_bloged }}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

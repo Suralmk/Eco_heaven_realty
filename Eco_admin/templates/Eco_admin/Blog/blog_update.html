@@ -1,0 +1,76 @@
+{% extends "Eco_admin/staff.html" %} {% block content %}
+<div class="staff-blog-create-container">
+  <div class="staff-blog-create-wrapper">
+    <h1>Update a Blog</h1>
+    <div class="staff-blog-create-form-container">
+      <form method="POST" enctype="multipart/form-data" spellcheck="false">
+        {% csrf_token %}
+        <div class="input-field-blog">
+          <label for="blog_title">Blog Titie</label>
+          <input
+            type="text"
+            name="blog_title"
+            id="blog_title"
+            placeholder="Enter title"
+            class="input"
+            value="{{ blog.title }}"
+          />
+        </div>
+
+        <div class="input-field-blog">
+          <label for="blog_content">Blog Content</label>
+          <textarea
+            name="blog_content"
+            id="blog_content"
+            cols="30"
+            rows="10"
+            class="input"
+          >
+        {{ blog.content }}</textarea
+          >
+        </div>
+
+        <div class="input-field-blog">
+          <label for="blog_author">Blog Author</label>
+          <input
+            type="text"
+            name="blog_author"
+            id="blog_author"
+            placeholder="Enter Blog Author"
+            class="input"
+            value="{{ blog.author }}"
+          />
+        </div>
+
+        <div class="show-uploaded-image">
+          <img
+            src="{{blog.image.url}}"
+            alt=""
+            style="display: block"
+            id="uploaded-image-preview"
+          />
+        </div>
+        <div class="input-field-home">
+          <label
+            class="staff-home-add-image-select"
+            id="home_image_select"
+            for="blog_image"
+            >Choose Image</label
+          >
+          <input
+            type="file"
+            accept="image/*"
+            name="blog_image"
+            id="blog_image"
+            placeholder="Enter Price"
+            onchange=" showUploadedImage(event)"
+            hidden
+            class="input"
+          />
+        </div>
+        <button type="submit">Post Blog</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

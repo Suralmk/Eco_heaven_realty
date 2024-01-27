@@ -1,0 +1,142 @@
+{% extends "Eco_app/base.html" %}{% load static %} {% block content %}
+<div class="home-detail-container">
+  <div class="homes-header">
+    <div class="homes-header-contents">
+      <h1>{{ home.city_location }}</h1>
+      <p>{{ home.home_location}}</p>
+    </div>
+  </div>
+
+  <div class="home-detail-images-container">
+    <div class="home-detail-images">
+      {% if homepictures %} {% for homepicture in homepictures %}
+      <div class="home-detail-image fade">
+        <img src="{{ homepicture.image.url }}" alt="" />
+      </div>
+      {% endfor %} {% else %}
+      <div class="home-detail-image fade">
+        <img src="{{ home.image.url }}" alt="" />
+      </div>
+      {% endif %}
+
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+  </div>
+
+  <div class="home-detail-info-container">
+    <div class="home-detail-info">
+      <div class="home-description-and-price">
+        <div class="home-description">
+          <h1>Property Description</h1>
+          <p class="text-description">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam
+            nihil tempore dolor recusandae commodi, aliquid illum maxime a, odio
+            consequuntur laboriosam repellat nisi. Obcaecati officiis, maxime
+            molestias enim quidem modi! Lorem ipsum dolor sit amet, consectetur
+            <br />
+            <br />
+            adipisicing elit. Ex deserunt sapiente ut autem iusto veniam
+            dolores, perspiciatis quasi obcaecati quibusdam eligendi asperiores
+            animi quo nisi voluptatem sint facilis eum corrupti.
+          </p>
+        </div>
+        <div action="" class="home-price">
+          <h1>{{ home.price }}</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="home-detail-summary-container">
+    <div class="home-detail-summary">
+      <h1>Property Summary</h1>
+      <ul>
+        <li>
+          <h2>City:</h2>
+          <p>{{ home.city_location}}</p>
+        </li>
+        <li>
+          <h2>Location:</h2>
+          <p>{{ home.home_location }}</p>
+        </li>
+        <li>
+          <h2>Status:</h2>
+          <p>{{ home.home_type}}</p>
+        </li>
+        <li>
+          <h2>Area:</h2>
+          <p>{{ home.sqft}} Sqft</p>
+        </li>
+        <li>
+          <h2>Beds:</h2>
+          <p>{{ home.beds_rooms}}</p>
+        </li>
+        <li>
+          <h2>Baths:</h2>
+          <p>{{ home.bath_rooms }}</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="home-detail-reserveation-container">
+    <div class="home-detail-reservation">
+      <div class="home-detail-reservation-form-container">
+        <h1>Book to Visit This House</h1>
+        <form method="POST" id="reservation-form">
+          {% csrf_token %}
+          <div class="input-field-res">
+            <label for="full_name_reservation">Full Name</label>
+            <input
+              type="text"
+              name="full_name"
+              id="full_name_reservation"
+              placeholder="Enter Full Name"
+            />
+            <p id="error-message"></p>
+          </div>
+          <div class="input-field-res">
+            <label for="phone_no_reservation">Phone Number</label>
+            <input
+              type="number"
+              name="phone_no"
+              id="phone_no_reservation"
+              placeholder="Enter Phone Number"
+            />
+            <p id="error-message"></p>
+          </div>
+          <div class="input-field-res">
+            <label for="date_reservation">Phone Number</label>
+            <input
+              type="date"
+              name="date"
+              id="date_reservation"
+              placeholder="Select Date for Visist"
+            />
+            <p id="error-message"></p>
+          </div>
+          <button type="submit">Book</button>
+        </form>
+      </div>
+
+      <div class="reservation-info">
+        <p class="text-description">
+          {% for message in messages %}
+          <script>
+            window.alert("{{ message}}");
+          </script>
+          {% endfor %}
+        </p>
+        <br />
+        <p class="text-description">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus
+          reprehenderit quae atque illum nobis tempore voluptatem doloremque
+          dignissimos sit provident dolor laudantium esse, quia magni vel nulla!
+          Asperiores, cupiditate nesciunt?
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

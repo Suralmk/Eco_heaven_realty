@@ -1,0 +1,71 @@
+{% extends "Eco_admin/staff.html" %} {% block content %}
+<div class="users-list-container">
+  <h1>Users List</h1>
+  <div class="staff-messages">
+    <p>message</p>
+    {% for message in messages %}
+    <p>message {{ message }}</p>
+    {% endfor %}
+  </div>
+  <div class="users-list-wrapper">
+    <div class="users-list-table">
+      <div class="users-list-table-filter">
+        <div class="input-field-user">
+          <label for="filter_users">Filter Users</label>
+          <input
+            type="text"
+            onkeyup="filterUsers()"
+            name="filter_users"
+            id="filter_users"
+            placeholder="Name or Email"
+          />
+        </div>
+
+        <div class="input-field-user">
+          <label for="filter_users">Filter Users</label>
+          <select name="" id="">
+            <option value="">All</option>
+            <option value="">Staff</option>
+            <option value="">Non Staff</option>
+          </select>
+        </div>
+      </div>
+      <table id="users_table">
+        <tr>
+          <th>No</th>
+          <th>Full Name</th>
+          <th>Email</th>
+          <th>Staff</th>
+          <th>Last Login</th>
+          <th>View Detail</th>
+          <th>Delete User</th>
+        </tr>
+        {% if users %} {% for user in users %}
+
+        <tr>
+          <td style="font-weight: bold">
+            <input type="checkbox" name="check_user" id="ckeck_user" />
+            {{forloop.counter }}
+          </td>
+          <td>{{user.first_name}} &nbsp; {{user.last_name}}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.is_staff }}</td>
+          <td>{{ user.last_login}}</td>
+          <td>
+            <a class="user-list-detail-link" onclick="messageShow()">Detail</a>
+          </td>
+          <td>
+            <a
+              class="user-list-delete-link"
+              href="{% url 'users-delete' user.id  %}"
+              onclick="() => messageShow(event)"
+              >Delete</a
+            >
+          </td>
+        </tr>
+        {% endfor %} {% endif %}
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

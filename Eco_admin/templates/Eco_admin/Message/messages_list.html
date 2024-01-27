@@ -1,0 +1,31 @@
+{% extends "Eco_admin/staff.html" %} {% block content %}
+<div class="staff-messages-container">
+  <h1>Contact me messages from clients</h1>
+
+  <table class="contact-message-table">
+    <tr>
+      <th>No</th>
+      <th>User Detail</th>
+      <th>Enquiry</th>
+
+      <th>Message</th>
+    </tr>
+
+    {% for contact_message in contact_messages %}
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>
+        <div class="user-detail">
+          <p>{{ contact_message.full_name}}</p>
+          <p>{{ contact_message.email}}</p>
+          <p>{{ contact_message.phone_number}}</p>
+        </div>
+      </td>
+      <td>{{ contact_message.enquiry }}</td>
+
+      <td>{{ contact_message.message }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+{% endblock %}

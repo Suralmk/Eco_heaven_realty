@@ -1,0 +1,74 @@
+{% extends "Eco_admin/staff.html" %} {% load static %} {% block content %}
+<div class="staff-home-detail-container">
+  <div class="staff-home-detail-location">
+    <h1>{{ home.city_location}}, {{ home.home_location}}</h1>
+  </div>
+  <h2>Home Images . . .</h2>
+  <div class="staff-home-detail-images">
+    {% for homepic in homepics %}
+    <div class="staff-home-detail-image">
+      <img src="{{ homepic.image.url  }}" alt="" />
+      <div class="staff-home-detail-image-cover">
+        <a class="staff-content-link" href="">View Image</a>
+        <a
+          class="staff-content-link"
+          href="{% url 'delete-home-image' home.id homepic.id  %}"
+          >Delete Image</a
+        >
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="staff-home-detail-content">
+    <div class="staff-home-detail-info">
+      <ul>
+        <li>
+          <p>City</p>
+          <p>{{home.city_location}}</p>
+        </li>
+        <li>
+          <p>Location</p>
+          <p>{{home.home_location}}</p>
+        </li>
+        <li>
+          <p>Home Type</p>
+          <p>{{home.home_type}}</p>
+        </li>
+        <li>
+          <p>Beds</p>
+          <p>{{home.beds_rooms}}</p>
+        </li>
+        <li>
+          <p>Baths</p>
+          <p>{{home.bath_rooms}}</p>
+        </li>
+        <li>
+          <p>Sqft</p>
+          <p>{{home.sqft}}</p>
+        </li>
+      </ul>
+    </div>
+    <div class="staff-home-detail-description">
+      <h2>Home Description</h2>
+      <p class="text">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi itaque
+        ipsum, laboriosam ex repudiandae natus sint eaque. Sunt molestias amet
+        ipsam, tenetur non quod voluptate tempora. Mollitia dolorum distinctio
+        officia!
+        <br />
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita at ex
+        ut. Velit atque vel sapiente sequi amet, ut voluptatibus dolor molestias
+        molestiae mollitia sunt debitis maxime odio a maiores!
+      </p>
+    </div>
+  </div>
+
+  <div class="staff-home-detail-buttons">
+    <a href="{% url 'home-update' home.id %}">Edit This House</a>
+    <a href="{% url 'home-detail-add-images' home.id %}">Add More Images</a>
+    <a href="{% url 'home-delete' home.id %}" class="delete-link-home"
+      >Delete This House</a
+    >
+  </div>
+</div>
+{% endblock %}

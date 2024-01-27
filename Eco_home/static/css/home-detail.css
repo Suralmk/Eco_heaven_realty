@@ -1,0 +1,283 @@
+.home-detail-container .homes-header {
+    padding-top: 100px;
+}
+.homes-header::before {
+    width: 7px;
+}
+.home-detail-images-container {
+    height: auto;
+    width: 100%;
+}
+.home-detail-images {
+    max-width: 1350px;
+    margin: 0 auto;
+    padding: 72px;
+    position: relative;
+    z-index: 0;
+}
+.home-detail-image {
+    height: 700px;
+    width: 100%
+}
+.home-detail-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    bottom: 50%;
+    transform: translatey(-50%);
+    width: auto;
+    height: 55px;
+    padding: 16px;
+    color: rgb(245, 243, 243);
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    background: rgba(0, 0, 0, 0.39);
+}
+.prev {
+    left: 0;
+}
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+.prev:hover, .next:hover {
+    background: rgba(0, 0, 0, 0.59);
+}
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+  }
+  
+  @-webkit-keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+  }
+  
+  @keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+  }
+
+
+.home-detail-info-container {
+    width: 100%;
+    height: auto;
+    background: #E4E5Df;
+}
+.home-detail-info {
+    padding: 65px;
+    max-width: 1350px;
+    margin: 0 auto;
+}
+.home-description-and-price{
+    display: flex;
+    gap: 100px;
+}
+.home-price {
+    position: relative;
+    display: flex;
+    height: max-content;
+    align-items: center;
+    padding: 50px 70px;
+    border: 5px solid #2756278a;
+
+}
+.home-price h1 {
+    position: absolute;
+    right: -50px;
+}
+.home-description {
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 60%;
+}
+.home-description h1 {
+    color: #08110C;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+
+
+.home-detail-summary-container {
+        width: 100%;
+        height: auto;
+}
+.home-detail-summary {
+    padding: 65px;
+    max-width: 1350px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.home-detail-summary h2{
+    font-size: 17px;
+    color: black;
+    font-weight: bold;
+}
+.home-detail-summary ul {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.home-detail-summary ul li{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding:5px ;
+}
+
+
+
+.home-detail-reserveation-container{
+    width: 100%;
+    height: auto;
+}
+
+.home-detail-reservation{
+    padding: 65px;
+    max-width: 1350px;
+    margin: 0 auto;
+    display: flex;
+    gap: 50px;
+    align-items: center;
+}
+
+.home-detail-reservation-form-container{
+    width: 50%;
+}
+.home-detail-reservation-form-container form{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: start;
+}
+.input-field-res {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+}
+.input-field-res label::after {
+    content: "*";
+    font-size: 18px;
+    display: inline-flex;
+    color: red;
+    margin-left: 5px;
+}
+.input-field-res input{
+    border: 1px solid rgba(0, 0, 0, 0.251);
+    outline: none;
+    padding: 12px 15px;
+    background: white;
+}
+.input-field-res input:focus{
+    border: 1px solid #146e3ad8;
+}
+.error input {
+    border: 1px solid red;
+}
+.error #error-message {
+    color: red;
+    font-size: 14px;
+}
+.home-detail-reservation-form-container button{
+    margin: 15px 0 0 0 ;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance:textfield;
+}
+
+.reservation-info {
+    width: 50%;
+}
+
+@media screen and (max-width:950px){
+    .home-detail-image {
+        height: auto;
+        width: 100%
+    }
+    .home-detail-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+      
+}
+@media screen and (max-width:850px){
+    .home-detail-image {
+        height: auto;
+    }
+    .home-detail-image img {
+        object-fit: cover;
+    }
+    .home-detail-reservation{
+        flex-direction: column;
+        gap: 30px;
+    }
+    .home-detail-reservation-form-container{
+        width: 100%;
+    }
+    .reservation-info {
+        width: 100%;
+    }
+    .home-detail-summary ul {
+        width: 100%;
+    }
+    .home-description-and-price{
+        flex-direction: column;
+    }
+    .home-description {
+        width: 100%;
+    }
+    .home-price {
+        width: 120px;
+    }
+      
+}
+@media screen and (max-width:800px){
+    .home-detail-images {
+        padding: 70px 40px;
+    }   
+}
+@media screen and (max-width:750px){
+    .home-detail-images {
+        padding: 70px 20px;
+    }  
+    .home-detail-reservation h1 {
+        font-size: 30px;
+    }
+    #reservation-form {
+        padding: 20px 0;
+    }
+    .home-detail-reservation,
+    .home-detail-summary,
+    .home-detail-info {
+        padding: 65px 20px;
+    }
+}

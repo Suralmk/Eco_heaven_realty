@@ -1,0 +1,64 @@
+{% extends "Eco_admin/staff.html" %} {% load static %} {% block content %}
+<div class="add-staff-contaier">
+  <div class="staff-add-form-container">
+    <form method="POST" id="add-staff-form">
+      {% csrf_token %}
+
+      <div class="input-field-user-flex">
+        <div class="input-field-user">
+          <label for="staff_first_name">First Name</label>
+          <input
+            type="text"
+            name="staff_first_name"
+            id="staff_first_name"
+            placeholder="Enter First Name"
+            class="input"
+          />
+        </div>
+        <div class="input-field-user">
+          <label for="staff_last_name">Last Name</label>
+          <input
+            type="text"
+            name="staff_last_name"
+            id="staff_last_name"
+            placeholder="Enter Last Name"
+            class="input"
+          />
+        </div>
+      </div>
+
+      <div class="input-field-user">
+        <label for="staff_email">Email</label>
+        <input
+          type="email"
+          name="staff_email"
+          id="staff_email"
+          placeholder="Enter Email"
+          class="input"
+        />
+      </div>
+
+      <div class="input-field-user">
+        <label for="staff_password">Password</label>
+        <input
+          type="text"
+          name="staff_password"
+          id="staff_password"
+          placeholder="Enter Password"
+          class="input"
+        />
+      </div>
+
+      <button type="submit">Add Staff</button>
+    </form>
+    {% for message in messages %}
+    <div class="staff-error-alert">
+      <p>
+        <img src="{% static 'src/images/icons/alert-fill.png' %}" alt="" />
+        {{message}}
+      </p>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,55 @@
+.staff-tour-requests-list-container {
+    margin-top: 15px;
+}
+
+.staff-tour-requests {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+    padding: 50px 10px ;
+    background: rgba(255, 255, 255, 0.719);
+    gap: 35px;
+}
+.staff-tour-request{
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.329) 0 0 5px;
+}
+
+.staff-tour-request .left-container {
+    width: 25%;
+    padding: 10px;
+    display: flex;
+    gap: 10px;
+    background: rgba(128, 128, 128, 0.123);
+}
+.staff-tour-request .left-container .request-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.staff-tour-request .right-container {
+    width: 67%;
+    background: white;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.staff-tour-request .action-container{
+    width: 8%;
+    padding: 10px;
+    background: white;
+}
+
+p {
+    font-weight: bold;
+}
+span {
+    font-weight: lighter;
+    color: rgba(0, 0, 0, 0.61);
+    margin-left: 10px;
+}

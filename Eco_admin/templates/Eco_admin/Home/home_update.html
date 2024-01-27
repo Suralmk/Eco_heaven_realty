@@ -1,0 +1,118 @@
+{% extends "Eco_admin/staff.html" %} {% block content %}
+<div class="staff-home-update-cotainer">
+  <h1>Update Home</h1>
+
+  <div class="staff-home-create-form-container">
+    <form method="POST" enctype="multipart/form-data" spellcheck="false">
+      {% csrf_token %}
+      <div class="input-field-home-flex">
+        <div class="input-field-home">
+          <label for="city_location">City</label>
+          <input
+            type="text"
+            name="city_location"
+            id="city_location"
+            value="{{ home.city_location }}"
+            placeholder="Enter City Location"
+            class="input"
+          />
+        </div>
+        <div class="input-field-home">
+          <label for="home_location">Home Location</label>
+          <input
+            type="text"
+            name="home_location"
+            value="{{ home.home_location }}"
+            id="home_location"
+            placeholder="Enter Home Location"
+            class="input"
+          />
+        </div>
+      </div>
+
+      <div class="input-field-home-flex">
+        <div class="input-field-home">
+          <label for="bed_rooms">Bed Rooms</label>
+          <input
+            type="number"
+            name="bed_rooms"
+            value="{{ home.beds_rooms }}"
+            id="bed_rooms"
+            placeholder="Enter Bed Rooms"
+            class="input"
+          />
+        </div>
+        <div class="input-field-home">
+          <label for="bath_rooms">Bath Rooms</label>
+          <input
+            type="number"
+            name="bath_rooms"
+            id="bath_rooms"
+            value="{{ home.bath_rooms }}"
+            placeholder="Enter Number of Bath Rooms"
+            class="input"
+          />
+        </div>
+      </div>
+
+      <div class="input-field-home-flex">
+        <div class="input-field-home">
+          <label for="area">Area</label>
+          <input
+            type="number"
+            name="sqft"
+            value="{{ home.sqft }}"
+            id="area"
+            placeholder="Enter Area in Sqft"
+            class="input"
+          />
+        </div>
+        <div class="input-field-home">
+          <label for="price">Home Price</label>
+          <input
+            type="number"
+            name="price"
+            value="{{ home.price }}"
+            id="price"
+            placeholder="Enter Price"
+            class="input"
+          />
+        </div>
+      </div>
+      <div class="input-field-home">
+        <label for="home_type">Home Type</label>
+        <select name="home_type" id="home_type" class="input">
+          <option value="For Rent">For Rent</option>
+          <option value="For sale">For Sale</option>
+        </select>
+      </div>
+      <div class="show-uploaded-image">
+        <img
+          src="{{ home.image.url }}"
+          alt=""
+          id="uploaded-image-preview"
+          style="display: block"
+        />
+      </div>
+      <div class="input-field-home">
+        <label
+          class="staff-home-add-image-select"
+          id="home_image_select"
+          for="home_image"
+          >Change Main Cover Image</label
+        >
+        <input
+          type="file"
+          accept="image/*"
+          name="image"
+          id="home_image"
+          placeholder="Enter Price"
+          onchange=" showUploadedImage(event)"
+          hidden
+        />
+      </div>
+      <button type="submit">Update Home</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

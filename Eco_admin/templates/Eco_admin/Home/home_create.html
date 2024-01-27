@@ -1,0 +1,114 @@
+{% extends "Eco_admin/staff.html" %} {% block content %}
+<div class="staff-home-create-container">
+  <h1>Add New Homes to Eco heaven Collection</h1>
+
+  <div class="staff-home-create-form-container">
+    <form
+      method="POST"
+      enctype="multipart/form-data"
+      spellcheck="false"
+      id="add-new-home"
+    >
+      {% csrf_token %}
+      <div class="input-field-home-flex">
+        <div class="input-field-home">
+          <label for="city_location">City</label>
+          <input
+            type="text"
+            name="city_location"
+            id="city_location"
+            placeholder="Enter City Location"
+            class="input"
+          />
+        </div>
+        <div class="input-field-home">
+          <label for="home_location">Home Location</label>
+          <input
+            type="text"
+            name="home_location"
+            id="home_location"
+            placeholder="Enter Home Location"
+            class="input"
+          />
+        </div>
+      </div>
+
+      <div class="input-field-home-flex">
+        <div class="input-field-home">
+          <label for="bath_rooms">Bath Rooms</label>
+          <input
+            type="number"
+            name="bath_rooms"
+            id="bath_rooms"
+            placeholder="Enter Number of Bath Rooms"
+            class="input"
+          />
+        </div>
+        <div class="input-field-home">
+          <label for="bed_rooms">Home Location</label>
+          <input
+            type="number"
+            name="bed_rooms"
+            id="bed_rooms"
+            placeholder="Enter Bed Rooms"
+            class="input"
+          />
+        </div>
+      </div>
+
+      <div class="input-field-home-flex">
+        <div class="input-field-home">
+          <label for="area">Area</label>
+          <input
+            type="number"
+            name="sqft"
+            id="area"
+            placeholder="Enter Area in Sqft"
+            class="input"
+          />
+        </div>
+        <div class="input-field-home">
+          <label for="price">Home Price</label>
+          <input
+            type="number"
+            name="price"
+            class="input"
+            id="price"
+            placeholder="Enter Price"
+          />
+        </div>
+      </div>
+      <div class="input-field-home">
+        <label for="home_type">Home Type</label>
+        <select name="home_type" id="home_type" class="input">
+          <option value=""></option>
+          <option value="For sale">For Sale</option>
+          <option value="For Rent">For Rent</option>
+        </select>
+      </div>
+      <div class="show-uploaded-image">
+        <img src="" alt="" id="uploaded-image-preview" />
+      </div>
+      <div class="input-field-home">
+        <label
+          class="staff-home-add-image-select"
+          id="home_image_select"
+          for="home_image"
+          >Coose Main Cover Image</label
+        >
+        <input
+          type="file"
+          accept="image/*"
+          name="image"
+          id="home_image"
+          placeholder="Enter Price"
+          onchange=" showUploadedImage(event)"
+          hidden
+          class="input"
+        />
+      </div>
+      <button type="submit">Add Home</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

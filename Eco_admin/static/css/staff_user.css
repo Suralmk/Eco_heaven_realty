@@ -1,0 +1,170 @@
+.users-list-container{
+    width: 100%;
+    height: auto;
+    margin-top: 30px;
+    min-height: 100vh;
+    max-height: auto;
+    position: relative;
+}
+
+.users-list-wrapper {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    overflow-x: scroll;
+}
+.users-list-table {
+    width: 1160px;
+    background: white;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+
+}
+.users-list-table  label::after {
+   display: none;
+}
+.users-list-table  input{
+    padding: 7px 10px;
+    width:300px;
+}
+.users-list-table table {
+    width: 100%;
+    border-collapse:collapse;
+    box-shadow: rgba(36, 35, 35, 0.426) 0 0 10px;
+    border-radius: 15px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.users-list-table th {
+    text-align: start;
+    padding: 15px 8px ;
+    background:rgb(29, 28, 28);
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+}
+.users-list-table td {
+    padding: 8px;
+}
+.users-list-table td input{
+    cursor: pointer;
+    width: 15px;
+
+}
+.users-list-table tr {
+    background: white;
+    transition: 0.5s;
+    border-radius: 15px;
+}
+.users-list-table  tr:nth-child(even) {
+    background-color: #e0f1e73b;
+  }
+.users-list-table tr:hover {
+    background: #8c979154;
+}
+.user-list-delete-link, .user-list-detail-link {
+    width: fit-content;
+}
+.user-list-detail-link {
+    color: black;
+    font-weight: bolder;
+}
+.user-list-delete-link {
+    color: rgb(241, 0, 0);
+    font-weight: bolder;
+}
+
+.users-list-table-filter {
+    display: flex;
+    gap: 20px;
+}
+.users-list-table-filter .input-field-user {
+    width: 300px;
+}
+.users-list-table-filter .input-field-user input,
+.users-list-table-filter .input-field-user  select{
+   padding: 8px 10px;
+}
+/*-------------------------------------
+        Staf User Deatil 
+---------------------------------------*/
+/*-------------------------------------
+        Staf User Add 
+---------------------------------------*/
+.staff-add-form-container {
+    margin-top: 20px;
+    height: 100vh;
+}
+.staff-add-form-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding:30px ;
+    align-items: start;
+    background: white;
+}
+.input-field-user-flex {
+    display: flex;
+    width: 100%;
+    gap: 50px;
+}
+.input-field-user {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+}
+.input-field-user label::after {
+    content: "*";
+    font-size: 18px;
+    display: inline-flex;
+    color: red;
+    margin-left: 5px;
+}
+.input-field-user .input{
+    border: 1px solid rgba(0, 0, 0, 0.251);
+    outline: none;
+    padding: 12px 15px;
+    background: white;
+}
+.input-field-user .invalid{
+    border: 1px solid rgba(245, 4, 4, 0.993);
+}
+.input-field-user .input:focus{
+    border: 1px solid #000000d8;
+}
+.error input {
+    border: 1px solid red;
+}
+.error #error-message {
+    color: red;
+    font-size: 14px;
+}
+.staff-add-form-container button {
+    margin: 15px 0 0 0 ;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    background: black;
+    color: white;
+}
+
+.staff-add-form-container form input[class=valid]{
+    border-color:  green;
+}
+
+@media screen and  (max-width:600px){
+    .input-field-user-flex {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .staff-add-form-container form {
+        padding: 15px;
+    }
+
+}

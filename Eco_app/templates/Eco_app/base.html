@@ -1,0 +1,289 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eco Heaven realty</title>
+
+    <!-- <link rel="shortcut icon" type="image/svg" href="{% static 'src/base/logo-icon.svg'%}">-->
+    <link rel="stylesheet" href="{% static 'css/style.css'%}" /> 
+    <link rel="stylesheet" href="{% static 'css/base.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/homes.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/blogs.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/home-detail.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/blog_detail.css'%}" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
+    <script defer src="https://cdn.lordicon.com/bhenfmcm.js"></script>
+    <script src="{% static 'js/base.js'%}" defer></script>
+    <script src="{% static 'js/main.js'%}" defer></script>
+  </head>
+  <body>
+    <div class="nav-container">
+      <div class="logo-container">
+        <img src="{% static '/src/logo-icon.svg'%}" alt="svg" />
+        <h3 class="company-name">Eco Heaven Realty</h3>
+      </div>
+      <nav class="nav-buttons">
+        <ul>
+          <li><a href="{% url 'index' %}">Home</a></li>
+          <li>
+            <a href="{% url 'company' %}" class="nav-company-btn"
+              >Comapny&nbsp;<i class="ri-arrow-down-s-line"></i
+              ><i class="ri-arrow-up-s-line"></i
+            ></a>
+          </li>
+          <li>
+            <a href="#ctgry" class="nav-cateagory-btn"
+              >Cateagory&nbsp;<i class="ri-arrow-down-s-line"></i
+              ><i class="ri-arrow-up-s-line"></i
+            ></a>
+          </li>
+          <li><a href="{% url 'blog' %}">Blog</a></li>
+          <li><a href="#cus">ContuctUs</a></li>
+        </ul>
+      </nav>
+
+      <div class="company-drop-down-setting">
+        <div class="company-setting-header">
+          <p>Eco Heaven Realty</p>
+        </div>
+        <a href="">Our Mission</a>
+        <hr />
+        <a href="">Our Goals</a>
+        <hr />
+        <a href="{% url 'blog' %}">Blog</a>
+        <hr />
+        <a href="">News</a>
+      </div>
+
+      <div class="cateagory-drop-down-setting">
+        <div class="cateagory-setting-header">
+          <p>Option</p>
+        </div>
+        <a href="">For Rent</a>
+        <hr />
+        <a href="">For Rent</a>
+      </div>
+
+      <div class="create-and-login">
+        <a href="{% url 'login' %}"><button type="button">Login</button></a>
+        <a href="{% url 'signup' %}"
+          ><button type="button" id="create-account-btn">
+            Create an account
+          </button></a
+        >
+        <a href=""><i class="ri-menu-line" style="display: none"></i></a>
+        <a href=""><i class="ri-close-line" style="display: none"></i></a>
+      </div>
+
+      {% if request.user.is_authenticated %}
+      <a href="" style="display: none"><i class="ri-menu-line"></i></a>
+      <a href="" style="display: none"><i class="ri-close-line"></i></a>
+      <style>
+        .create-and-login {
+          display: none;
+        }
+      </style>
+      <div class="user-container">
+        <div class="auth-user-nav">
+          <li>
+            <a href="{% url 'homes' %}"><button type="button">Browse Home</button></a>
+          </li>
+          {% if request.user.is_staff %}
+          <li>
+            <a style="display: flex; align-items: center" target="_blank" id="add-homes" href="{%  url 'staff' %}"
+              ><img
+                style="width: 35px"
+                src="{% static '/src/icons/pngegg.png' %}"
+                alt=""
+            /></a>
+          </li>
+          {% endif %}
+          <div class="dropdown">
+            <div class="user" >
+              <a style="display: block"
+                ><img
+                  style="width: 35px; height: auto; padding: 0.1rem"
+                  src="{% static '/src/icons/profile.png' %}"
+                  alt=""
+              /></a>
+            </div>
+            <div class="user-setting">
+              <div class="usersetting-username">
+                <p>{{request.user.first_name}}</p>
+              </div>
+
+              <a class="open-email-modal" style="cursor: pointer"
+                >Change Email</a
+              >
+              <hr />
+              <a class="open-username-modal" style="cursor: pointer"
+                >Change Username</a
+              >
+              <hr />
+              <a class="open-password-modal" style="cursor: pointer"
+                >Change Password</a
+              >
+              <hr />
+              <a href="{% url 'logout' %}">Logout</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+
+
+
+
+    <!-- Mobile Menu-->
+    <div class="mobile-nav-container"  >
+      <div class="logo-container">
+          <img src="{% static '/src/logo-icon.svg'%}" alt="svg">
+          <h3 class="company-name">Eco Heaven Realty</h3>
+      </div>
+      <nav class="nav-buttons" id="mobile-menu">
+          <ul>
+              <li><a href="#hne">Home</a></li>
+              <li><a href="{% url 'company' %}" class="nav-company-btn">Comapny&nbsp;<i class="ri-arrow-down-s-line"></i><i class="ri-arrow-up-s-line"></i></a>
+              </li>
+              <li><a href="#ctgry" class="nav-cateagory-btn">Cateagory&nbsp;<i class="ri-arrow-down-s-line"></i><i class="ri-arrow-up-s-line"></i></a>
+              </li>
+              <li><a href="{% url 'blog'  %}">Blog</a></li>
+              <li><a href="#cus">ContuctUs</a></li>
+          </ul>
+          <div class="create-and-login">
+              <a href="login/"><button type="button" >Login</button></a>
+              <a href="signup/"><button type="button" id="create-account-btn">Create an account</button></a>
+              <!-- <a href=""><i class="ri-menu-line" style="display: none;"></i></a>
+              <a href=""><i class="ri-close-line" style="display: none;"></i></a> -->
+          </div>
+      </nav>
+      <div class="mobile-menu-icon" onclick="displayMobileMenu()">
+          <img src="{% static '/src/icons/menu-line.png' %}" alt="">
+      </div>
+
+      <div class="company-drop-down-setting">
+          <div class="company-setting-header">
+              <p>Eco Heaven Realty</p>
+          </div>
+          <a href="">Our Mission</a>
+              <hr>
+              <a href="">Our Goals</a>
+              <hr>
+              <a href="">Blog</a>
+              <hr>
+              <a href="{% url 'staff' %}">News</a>
+      </div>
+
+      <div class="cateagory-drop-down-setting">
+          <div class="cateagory-setting-header">
+              <p>Option</p>
+          </div>
+              <a href="">For Rent</a>
+              <hr>
+              <a href="">For Rent</a>
+      </div>
+      {% if request.user.is_authenticated %}
+      <a href="" style="display: none;"><i class="ri-menu-line"></i></a>
+      <a href="" style="display: none;"><i class="ri-close-line"></i></a>
+      <style>
+            .mobile-nav-container  .create-and-login{
+                  display: none;
+              }  
+      </style>
+      <div class="user-container">
+          <div class="auth-user-nav">
+              <!-- <li> <a href="homes/"><button type="button" >Browse Home</button></a></li> -->
+               {% if request.user.is_staff %}
+              <li> <a style="display: flex; align-items: center;" target="_blank" id="add-homes" href="{% url 'staff' %}"><img style="width: 35px;" src="{% static '/src/icons/pngegg.png' %}" alt=""></a></li>
+               {% endif %}
+
+               <li class="dropdown">
+                <div class="user" style="display: flex ; gap: 10px;">
+               <a  style="display: block;"><img style="width: 35px; height:auto; padding: 0.1rem; " src="{% static '/src/icons/profile.png' %}" alt=""></a></div>
+                  <div class="user-setting">
+                   <div class="usersetting-username">
+                       <p>{{request.user.first_name}}</p>
+                   </div>
+                   
+                   <a  class="open-email-modal" style="cursor: pointer;" >Change Email</a>
+                   <hr>
+                   <a  class="open-username-modal"  style="cursor: pointer;" >Change Username</a>
+                   <hr>
+                   <a class="open-password-modal" style="cursor: pointer;">Change Password</a>
+                   <hr>
+                   <a href="{% url 'logout' %}">Logout</a>
+               </div>
+               </li>
+               
+           </div>
+      </div>
+    {% endif %}
+  </div>
+  <script>
+
+
+    
+
+</script>   
+    <div class="middle-content">{% block content %} {% endblock %}</div>
+
+
+
+
+    <!--footer of the website-->
+<footer>
+  <div class="footer-wrapper">
+
+      <div class="footer-column-1">
+          <ul>
+              <li class="footer-logo"><a href=""><img src="{%static '/src/base/logo-icon.svg'%}" alt="">Eco Heaven Realty</a> </li>
+                  <div class="social-links">
+                       <ul>
+                           <li><a href=""><i class="ri-facebook-circle-fill"></i></a></li>
+                          <li><a href=""><i class="ri-linkedin-box-fill"></i></a></li>
+                          <li><a href=""><i class="ri-twitter-fill"></i></a></li>
+                          <li><a href=""><i class="ri-instagram-fill"></i></a></li>
+                      </ul>
+                  </div>
+              <li class="footer-contact-link"><a  href="">Contact Us</a></li>
+          </ul>
+      </div>
+
+          <div class="footer-links">
+              <ul>
+                  <li class="footer-titles">Navigation</li>
+                  <li><a href="">Company</a></li>
+                  <li><a href="{% url 'index' %}">Home</a></li>
+                  <li><a href="#schedule">Contact Us</a></li>
+                  <li><a href="{% url 'blog' %}">Blog</a></li>
+                  <li><a href="">Properties</a></li>
+              </ul>
+          </div>
+
+          <div class="footer-links">
+              <ul>
+                  <li class="footer-titles">Company</li>
+                  <li><a href="">About us</a></li>
+                  <li><a href="">Our mission and vision</a></li>
+                  <li><a href="/logout">Our team</a></li>
+              </ul>
+          </div>
+
+      <div class="footer-links">
+              <ul>
+                  <li class="footer-titles">Support</li>
+                  <li><a href="#schedule">Contact us</a></li>
+                  {% if not request.user.is_authenticated %}
+                  <li><a href="/login">Login</a></li>
+                  {% endif %}
+              </ul>
+      </div>
+
+  </body>
+</html>

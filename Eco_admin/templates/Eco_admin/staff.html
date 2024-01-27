@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eco Heaven staff</title>
+    <script src="{% static 'js/staff.js'%}" defer></script>
+    <link rel="stylesheet" href="{% static 'css/staff.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/staff_home.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/staff_blog.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/staff_user.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/staff_tour.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/staff_message.css'%}" />
+  </head>
+  <body>
+    <div class="staff-container">
+      <div class="staff-wrapper">
+        <div id="mySidenav" class="sidenav">
+          <h3>Eco heaven Realty</h3>
+          <button
+            href="javascript:void(0)"
+            class="staff-menu-btn closebtn"
+            onclick="closeNav()"
+          >
+            &times;
+          </button>
+
+          <ul class="menu-items-list">
+            <li class="menu-item">
+              <button class="menu-item-btn">Houses</button>
+              <ul>
+                <li><a href="{% url 'home-list' %}">See Homes</a></li>
+                <li><a href="{% url 'home-create' %}">Add Home</a></li>
+              </ul>
+            </li>
+
+            <li class="menu-item">
+              <button class="menu-item-btn">Blogs</button>
+              <ul>
+                <li><a href="{% url 'admin-blog-list' %}">See Blogs</a></li>
+                <li><a href="{% url 'admin-blog-create' %}">Add Blog</a></li>
+              </ul>
+            </li>
+
+            <li class="menu-item">
+              <button class="menu-item-btn">Users</button>
+              <ul>
+                <li><a href="{% url 'users-list' %}">See Users</a></li>
+                {% if request.user.is_admin %}
+                <li><a href="{% url 'staff-users-add' %}">Add Staff</a></li>
+                {% endif %}
+              </ul>
+            </li>
+
+            <li class="menu-item">
+              <button class="menu-item-btn">Tour Requests</button>
+              <ul>
+                <li>
+                  <a href="{% url 'tour-requests-list' %}">See Requests</a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="menu-item">
+              <button class="menu-item-btn">Messages</button>
+              <ul>
+                <li><a href="{% url 'messages-list' %}">See Messages</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <button onclick="openNav()" class="staff-menu-btn">Open Menu</button>
+        <a href="{%  url 'staff' %}"
+          ><button class="staff-menu-btn">Staff Page</button></a
+        >
+        <a href="{%  url 'index' %}"
+          ><button class="staff-menu-btn">Home Page</button></a
+        >
+        {% block content %}
+        <div class="staff-content-container">
+          <h1>Eco Heaven Realty Staff Page</h1>
+          <p class="staff-context-text">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quos
+            praesentium eos, dicta odit, voluptatibus natus hic a necessitatibus
+            adipisci ullam perspiciatis inventore nihil nostrum pariatur
+            reprehenderit quam quia, sequi unde!
+          </p>
+          <div class="staff-contents">
+            <div class="staff-content">
+              <img src="{% static 'src/images/header-bg.jpg' %}" alt="" />
+              <div class="staff-content-section">
+                <h3>Add New Homes to Eco Heaven Realty Collection</h3>
+                <a class="staff-content-link" href="{% url 'home-create' %}"
+                  >Add New Homes</a
+                >
+              </div>
+            </div>
+            <div class="staff-content">
+              <img src="{% static 'src/blog/blog-1.jpg' %}" alt="" />
+              <div class="staff-content-section">
+                <h3>Write Recent News About Eco Heaven Relaty</h3>
+                <a
+                  class="staff-content-link"
+                  href="{% url 'admin-blog-create' %}"
+                  >Create Blog Post</a
+                >
+              </div>
+            </div>
+
+            <div class="staff-content">
+              <img src="{% static 'src/images/image-2.png' %}" alt="" />
+              <div class="staff-content-section">
+                <h3>Add New Staff Members</h3>
+                <a class="staff-content-link" href="{% url 'staff-users-add' %}"
+                  >Add New Staff</a
+                >
+              </div>
+            </div>
+
+            <div class="staff-content">
+              <img src="{% static 'src/images/slide-3.jpg' %}" alt="" />
+            </div>
+            <div class="staff-content">
+              <img src="{% static 'src/images/slide-3.jpg' %}" alt="" />
+            </div>
+          </div>
+        </div>
+
+        {% endblock %}
+      </div>
+    </div>
+  </body>
+</html>

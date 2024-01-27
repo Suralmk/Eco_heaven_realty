@@ -1,0 +1,442 @@
+{% extends "Eco_app/base.html" %}{% load static %} 
+
+{% block content %}
+
+<!-- Hero Container -->
+<section class="hero-container" style="background-image: url('{% static 'src/images/slide-3.jpg' %}') ;" >
+    <div class="hero">
+        <h1 class="hero-moto">Live Green, Live Luxuriously.</h1>
+        <p>Discover the Advantages of Eco-Friendly Homes with Our Real Estate Agency.</p>
+        <div class="search-bar">
+            <form action="{% url 'searched-homes' %}" method="GET" >
+                {% csrf_token %}
+                <li><a href="#">For&nbsp;sale&nbsp;<i class="ri-arrow-down-s-line"></i></a></li>
+                <input type="text" name="searched" id="searched" placeholder="Enter an address or city">
+                <button class="search-bar-green-btn" type="submit" ><img src="{% static '/src/base/search-icon' %}" alt=""></button></a>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- Who We Are Container -->
+<section class="who-we-are" >
+    <div class="who-we-are-wrapper" >
+        <div class="describe-text">
+            <p class="little-top-text">WHO WE ARE</p>
+            <h2>Discover Sustainable Luxury Living with EcoHaven Realty.</h2>
+            <p class="text-description">EcoHaven Realty is a real estate agency specialising in eco-friendly homes and sustainable living. We offer a range of eco-friendly properties, including energy-efficient homes, homes built with eco-friendly materials, and homes equipped with sustainable technologies such as solar panels.</p>
+            <a href="{% url 'company' %}">Our Company<i class="ri-arrow-right-up-line"></i></a>
+        </div>
+        <img src="{% static '/src/images/image-1.png' %}" alt="image">
+    </div>
+</section>
+
+<!-- Our Mission Container -->
+<section class="our-mission">
+    <div class="mission-wrapper">
+       <img src="{% static '/src/images/image-2.png' %}" alt="image">  
+        <div class="describe-text">
+           <p class="little-top-text">OUR MISSION</p>
+               <h2>Building a Better Future with Eco-Friendly Homes</h2>
+               <p class="text-description">The agency's mission is to provide clients with a selection of properties that meet high environmental standards, while also providing a comfortable and luxurious lifestyle.</p>
+               <a href="">Learn More<i class="ri-arrow-right-up-line"></i></a>
+        </div>
+    </div>    
+</section>
+
+
+    <!--view homes section-->
+    <section class="view-home">
+        <div class="view-homes-wrapper" >
+              <h2>Explore Eco-friendly Homes Near You.</h2>
+              <ul class="homes-view-header-list">
+                  <li><a href="#">New to market</a></li>
+                  <li><a href="#">Nature Nearby</a></li>
+                  <li><a href="#">Most viewed homes</a></li>
+              </ul>
+  
+              <style>
+                  .homes-view-header-list  {
+                      flex-wrap: wrap;
+                  }
+              </style>
+          <div class="home-list-wrapper"  >
+          {% for home in homes %}
+          {% if  forloop.counter < 7 %}
+          <div class="home-detail" >
+            <div class="header-home-detail" >
+              {% if home.price > 999 %}
+              <p>&#36;{{ home.price }}</p>
+              {% else %}
+              <p>&#36;{{ home.price }}</p>
+              {% endif %}
+  
+              <a href="#">{{ home.home_type}}</a>
+            </div>
+            <div class="middle-home-detail" >
+              <ul>
+                <li><p>{{home.beds_rooms}} beds</p></li>
+                <li><p>&middot;{{ home.bath_rooms }} baths</p></li>
+                <li><p>&middot;{{ home.sqft }} sqfts</p></li>
+                <li><p>&middot;Eco-friendlys</p></li>
+              </ul>
+              <p class="home-view-year">
+                <i class="ri-time-line"></i>2 years ago
+              </p>
+            </div>
+            <div class="home-image-view">
+              <img
+                src="{{ home.image.url}}"
+                alt="home image view"
+
+              />
+            </div>
+            <div class="bottom-home-detail">
+              <a href="{% url 'home-detail' home.get_name_url home.id %}"
+                ><p>{{home.city_location}},{{ home.home_location }}</p></a
+              >
+              <a href="#"><i class="ri-heart-line heart"></i></a>
+            </div>
+          </div>
+          {% endif %}
+          {% endfor %}        
+              </div>
+              <div class="browse-homes-link" >
+                  <a href="{% url 'homes' %}">Browse Now<i class="ri-arrow-right-up-line"></i></a>
+              </div>
+          </div>
+      </section>
+
+
+      <!-- Benefits Of Eco Heaven Section -->
+      <section class="benefit-of-eco">
+        <div class="benefit-of-eco-wrapper" >
+            <div class="benefit-header"  >
+                <h2>Benefits of owning an eco friendly home. </h2>
+                <p>High-quality homes with low-carbon impact.</p>
+            </div>
+            <div class="benefit-container" style="width: 100%; grid-column-gap: 20px;">
+
+                <div class="benefit-detail" style="width: 100%;">
+                    <div class="benefit-description" style="width: 100%;">
+                        <h3>Low energy costs</h3>
+                        <p style="width: 100%;">One of the most significant benefits of owning an Eco Haven Realty Home is lower energy costs. Our eco-friendly homes are designed to use less energy with our solar powered system, saving money on bills.</p>
+                    </div>
+                    <img src="{% static '/src/images/red-sun-img.svg'%}" alt="red beautiful sun image" style="width: 100%;">
+                </div>
+
+                
+                <div class="benefit-detail" style="width: 100%;">
+                    <div class="benefit-description" style="width: 100%;">
+                        <h3>Smaller carbon footprint </h3>
+                        <p style="width: 100%;">Our eco-friendly homes also have a smaller carbon footprint. They constantly use renewable energy sources and produce less waste which means they have a lower impact on the environment.</p>
+                    </div>
+                    <img src="{% static '/src/images/city-img.svg'%}" alt="city image" style="width: 100%;">
+                </div>
+
+
+                <div class="benefit-detail" style="width: 100%;">
+                    <div class="benefit-description" style="width: 100%;">
+                        <h3>Indoor </h3>
+                        <p style="width: 100%;">Our hybrid ventilation strategy includes both natural and mechanical ventilation, while our airtight wooden structure reduces risk of mold development, ensuring a healthy home.</p>
+                    </div>
+                    <img src="{% static '/src/images/cloud-img.svg'%}" alt="cloud image" style="width: 100%;">
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- What Our Customers Say Section -->
+    
+    <section class="what-our-customer-say" style="display: none;">
+        <div class="what-our-customer-say-wrapper">
+            <div class="what-our-customer-say-header">
+                <h2>What our customers say?</h2>
+                <p>Hear from our satisfied customers and clients.</p>
+            </div>
+
+            <div class="what-customer-say-wrapper">
+                <div class="what-customer-say">
+                    <p class="quote"><i class="ri-double-quotes-l"></i></p>
+                    <h3>Felix Jimoh</h3>
+                    <div class="customer-rating">
+                        <p>4.9</p>
+                        <p class="stars"><span>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+
+                        </span></p>
+                    </div>
+                    <p class="sayings">“I had a wonderful experience working with EcoHaven Realty to find my new home. They really took the time to understand what was important to me and helped me find a home that was not only beautiful but also eco-friendly and energy-efficient. </p>
+                </div> 
+
+
+                <div class="what-customer-say">
+                    <p class="quote"><i class="ri-double-quotes-l"></i></p>
+                    <h3>David T.</h3>
+                    <div class="customer-rating">
+                        <p>4.7</p>
+                        <p class="stars"><span>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                        </span></p>
+                    </div>
+                    <p class="sayings">“EcoHaven Realty is an amazing real estate agency that truly understands the importance of sustainability and eco-friendliness. They helped me find a beautiful home that was not only environmentally conscious.”</p>
+                </div> 
+
+                <div class="what-customer-say">
+                    <p class="quote"><i class="ri-double-quotes-l"></i></p>
+                    <h3>Susan Lanre</h3>
+                    <div class="customer-rating">
+                        <p>4.8</p>
+                        <p class="stars"><span>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                        </span></p>
+                    </div>
+                    <p class="sayings">“I recently sold my home with EcoHaven Realty, and I couldn't be happier with the experience. The team was knowledgeable, professional, and really took the time to understand what was important to me.”</p>
+                </div> 
+
+            </div>
+            <div class="side-buttons">
+                <a href="#"><i class="ri-arrow-left-s-line"></i></a>
+                <a href="#"><i class="ri-arrow-right-s-line"></i></a>
+            </div>
+            
+        </div>
+    </section>
+
+<!--common questions section-->
+<section class="common-questions">
+    <div class="common-questions-wrapper">
+        <div class="common-questions-left-wrapper">
+            <p class="little-top-text">FREQUENTLY ASKED QUESTIONS</p>
+            <h2>Common questions asked about our eco-friendly homes.</h2>
+            <p class="text-description">Here are some important questions that are frequently asked and the answers to the questions.</p>
+            <h3>Have a different question?</h3>
+            <a href="">Contact Us<i class="ri-arrow-right-up-line"></i></a>
+        </div>
+        <div class="common-questions-right-wrapper">
+            <div class="answer-to-questions">
+                <div class="answer-to-questions-header">
+                    <h3>What makes EcoHaven Realty different from other real estate agencies?</h3>
+                    <p id="answer-hide-btn"  href="">
+                        <i class="ri-arrow-up-s-line"></i>
+                        <i class="ri-arrow-down-s-line"></i></p>
+                </div>
+                <div class="content"><p >At EcoHaven Realty, we are committed to promoting sustainability in the real estate industry. We prioritize eco-friendly practices, such as green building techniques and energy-efficient systems, in all of our transactions. We believe that promoting environmental responsibility is not only the right thing to do, but it also benefits our clients by providing long-term cost savings and a healthier living environment.</p></div>
+                
+            </div>
+
+            <div class="answer-to-questions">
+                <div class="answer-to-questions-header">
+                    <h3>Do you only work with eco-friendly properties?</h3>
+                    <p id="answer-hide-btn"  href="">
+                        <i class="ri-arrow-up-s-line"></i>
+                        <i class="ri-arrow-down-s-line"></i></p>
+                </div>
+                <div  class="content"><p>While we specialize in promoting and selling eco-friendly properties, we work with all types of properties. Our focus is on promoting sustainable practices and educating our clients on how they can make their properties more eco-friendly.</p></div>
+            </div>
+
+            <div class="answer-to-questions">
+                <div class="answer-to-questions-header">
+                    <h3>Can you help me find an eco-friendly property?</h3>
+                    <p id="answer-hide-btn"  href="">
+                        <i class="ri-arrow-up-s-line"></i>
+                        <i class="ri-arrow-down-s-line"></i></p>
+                </div>
+                <div  class="content"><p>Absolutely! We have a database of eco-friendly properties and can work with you to find a property that aligns with your sustainability goals. Additionally, we can provide guidance on how to make any property more eco-friendly.</p></div>
+            </div>
+            
+            <div class="answer-to-questions">
+                <div class="answer-to-questions-header">
+                    <h3>What is your process for ensuring a property is eco-friendly?</h3>
+                    <p id="answer-hide-btn"  href="">
+                        <i class="ri-arrow-up-s-line"></i>
+                        <i class="ri-arrow-down-s-line"></i></p>
+                </div>
+                <div class="content"><p >We work with builders and contractors who specialise in eco-friendly building practices. We also conduct assessments of a property's energy and water usage, as well as its overall sustainability features, to ensure that it aligns with our eco-friendly standards.</p></div>
+            </div>
+
+            <div class="answer-to-questions">
+                <div class="answer-to-questions-header">
+                    <h3>Are eco-friendly properties more expensive?</h3>
+                    <p id="answer-hide-btn" href="">
+                        <i class="ri-arrow-up-s-line"></i>
+                        <i class="ri-arrow-down-s-line"></i>
+                    </p>
+                </div>
+                <div class="content"><p>Not necessarily. While some eco-friendly features may require an initial investment, such as solar panels or energy-efficient systems, they can ultimately lead to long-term cost savings on utility bills. Additionally, there are often government incentives and tax breaks available for eco-friendly properties and features..</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+<!--customer scheduling for visit-->
+<section class="schedule" id="schedule">
+    <div class="schedule-wrapper">
+
+        <div class="schedule-form-container">
+
+            <form action="" method="POST" id="schedule-form"> 
+                {% csrf_token %}
+                <div class="customer-name-phone" style=" width: 100%;">
+                    <div class="format full-name">
+                        <label for="name">Full name</label>
+                        <input type="text" name="full-name" placeholder="Full name" class="input">
+                        <p id="errormessage"></p>
+                    </div>
+                    <div class="format phone-number">
+                        <label for="phone-number">Phone number</label>
+                        <input type="text" name="phone-number" placeholder="Phone number" class="input">
+                        <p id="errormessage"></p>
+                    </div>
+                </div>
+
+                <div class="format email-input" style=" width: 100%;">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" placeholder="Your email" class="input">
+                    <p id="errormessage"></p>
+                </div>
+                    
+                <div class="format selector-input" style=" width: 100%;    ">
+                    <label for="enquiry">What is your enquiry about?*</label>
+                        <select  id="enquiry" name="enquiry"  class="input" style=" border-right:10px solid #f1f1f1;">
+                            <option value=""></option>
+                            <option value="BUY">Buy a house</option>
+                            <option value="RENT">Rent a house</option>
+                            <option value="VISIT">Visit site</option>
+                            <option value="AGENT">contact agent</option>
+                            <option value="INFORMATION">Information about locations</option>
+                        </select>
+                        <p id="errormessage"></p>
+                        
+                    
+                </div>
+                    
+                <div class="format additional-info-input"style=" width: 100%;">
+                    <label for="add_message">Additional information</label>
+                    <textarea name="message" id="add_message" cols="30" rows="5" placeholder="Message"></textarea>
+                </div>
+
+                <button class="sehedule-send" type="submit"       style="border: none;"         
+                >Send&nbsp;&nbsp;&nbsp;<i class="ri-send-plane-2-fill"></i></i></button>
+
+                
+            </form>
+            
+            
+        </div>
+
+        <div class="schedule-contact">
+            <h2>Get in touch to schedule a visit to your new house.</h2>
+            <p class="contact-txt">Kindly fill this form with your details about your inquiries and we would respond your inquiry shortly.</p>
+            <div class="contact">
+                <div class="contact-info">
+                    <i class="ri-send-plane-fill"></i>
+                    <div class="contact-information">
+                        <h3>Send an email</h3>
+                        <p>contact@ecohavenrealty.com</p>
+                    </div>
+                </div>
+
+                <div class="contact-info">
+                    <i class="ri-phone-fill"></i>
+                    <div class="contact-information">
+                        <h3>Give us a call</h3>
+                        <p>+234905 121 8127</p>
+                    </div>
+                </div>
+
+                <div class="contact-info">
+                    <i class="ri-map-pin-2-fill"></i>
+                    <div class="contact-information">
+                        <h3>Office address</h3>
+                        <p>11,Odo-Olowu, Ijeshatedo B/Stop, Surulere</p>
+                    </div>
+                </div>
+
+                <div class="contact-info">
+                    <i class="ri-time-fill"></i>
+                    <div class="contact-information">
+                        <h3>Working hours</h3>
+                        <p>Mon - Sat: 10am - 4pm</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+<!--find your eco-->
+<section class="find-your-eco">
+    <div class="find-your-eco-wrapper" style="background-image: url('{% static 'src/images/find-your-eco-bg.jpg' %}')">
+        <div class="find-your-eco-container">
+            <h2>Ready to find your eco-friendly home? </h2>
+            <p>We have homes in 20+ cities across the country to choose from!</p>
+            <a href="{% url 'homes' %}">Browse homes<i class="ri-arrow-right-up-line"></i></a>
+        </div>
+    </div>
+</section>
+
+
+<script>
+    
+// Contact Schedule form validation
+
+const scheduleForm = document.getElementById('schedule-form')
+
+scheduleForm.addEventListener('submit', e => {
+  e.preventDefault()
+  if (validateScheduleForm()) {
+    scheduleForm.submit()
+  }
+})
+
+function validateScheduleForm () {
+    var input,
+    i,
+    valid = true
+  input = scheduleForm.getElementsByClassName('input')
+  for (i = 0; i < input.length; i++) {
+    if (input[i].value == '') {
+      input[i].classList.add('invalid')
+      input[i].parentElement.querySelector('#errormessage').innerHTML =
+        'This Field is required!'
+      input[i].classList.remove('valid')
+      valid = false
+    } else {
+      input[i].classList.add('valid')
+      input[i].classList.remove('invalid')
+    }
+  }
+  return valid 
+}
+
+
+
+
+
+</script>
+
+{% endblock %}

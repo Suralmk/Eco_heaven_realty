@@ -1,0 +1,73 @@
+.homes-container {
+    width: 100%;
+    height: auto;
+    padding-top: 50px;
+}
+.homes-header {
+    padding: 30px 72px; 
+    max-width: 1350px;
+    margin: 0 auto;
+    display: flex;
+}
+.homes-header-contents {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.homes-header-contents p {
+    color: #313131;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 25px;
+    text-align: justify;
+}
+.homes-header::before {
+    content: "";
+    background: #27563a;
+    height: 100px;
+    width: 7px;
+    display:inline-block;
+    margin-right: 50px;
+    border-radius: 2px;
+}
+.homes-filter-container{
+    max-width: 1350px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: end;
+    padding: 0 72px;
+}
+.homes-filter {
+  width: max-content;
+}
+.homes-filter select {
+  font-size: 20px;
+  padding: 10px;
+  cursor: pointer;
+}
+.home-search-info {
+    width: 100%;
+    padding: 30px 20px;
+    background: rgba(8, 97, 38, 0.63);
+}
+.home-search-info p {
+    color: white;
+}
+@media screen and (max-width:800px) {
+    .homes-header{
+        padding: 30px;
+    }
+    .homes-filter-container{
+        padding: 0 30px;
+    }
+
+}
+@media screen and (max-width:750px) {
+    .homes-container .homes-header{
+        padding: 30px 20px;
+    }
+    .homes-container .view-homes-wrapper {
+        padding: 72px 20px;
+    }
+
+}

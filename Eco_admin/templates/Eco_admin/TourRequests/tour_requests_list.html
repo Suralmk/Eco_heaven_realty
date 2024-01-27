@@ -1,0 +1,54 @@
+{% extends "Eco_admin/staff.html" %} {% block content %}
+<div class="staff-tour-requests-list-container">
+  <h1>Current Tour Requests</h1>
+
+  <div class="staff-tour-requests">
+    {% for request in tour_requests %}
+    <div class="staff-tour-request">
+      <div class="left-container">
+        <p>{{ forloop.counter }},</p>
+        <div class="request-detail">
+          <div class="request-user">
+            <p>User Email: <span>{{ request.user }}</span></p>
+          </div>
+          <div class="requestd-user-name">
+            <p>Full Name: <span>{{ request.full_name }}</span></p>
+          </div>
+          <div class="requestd-user-phone">
+            <p>
+              Phone Number:
+              <span>{{ request.phone_number }}</span>
+            </p>
+          </div>
+          <div class="requestd-user-date">
+            <p>Date: <span>{{request.date }}</span></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="right-container">
+        <div class="requestd-user-home">
+          <p>Home: <span>{{ request.home }}</span></p>
+        </div>
+        <div class="requestd-user-home">
+          <p>Home Type: <span>{{ request.home.home_type }}</span></p>
+        </div>
+        <div class="requestd-user-home">
+          <p>City Location: <span>{{ request.home.city_location }}</span></p>
+        </div>
+        <div class="requestd-user-home">
+          <p>Home Location: <span>{{ request.home.home_location }}</span></p>
+        </div>
+        <div class="requestd-user-home">
+          <a href="{% url 'admin-home-detail' request.home.id %}"
+            >See Home Detail</a
+          >
+        </div>
+      </div>
+
+      <div class="action-container"><a href="">Delete this request</a></div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

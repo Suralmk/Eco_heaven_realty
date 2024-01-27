@@ -1,0 +1,39 @@
+{% extends "Eco_admin/staff.html" %} {% load static %} {% block content %}
+<div class="homes-list-container">
+  <h1>Currently Posted Homes</h1>
+  <div class="homes-list">
+    {% for home in homes %}
+
+    <div class="homes-list-home">
+      <div class="home-location-and-type">
+        <div class="home-location">
+          <p>{{ home.city_location}}</p>
+          <p>{{ home.home_location }}</p>
+        </div>
+        <div class="home-type">
+          <p>{{ home.home_type}}</p>
+        </div>
+      </div>
+      <div class="home-details">
+        <p>Sqft: <span>{{ home.sqft }}</span></p>
+        <p>beds: <span>{{ home.beds_rooms }}</span></p>
+        <p>bath: <span>{{ home.bath_rooms }}</span></p>
+      </div>
+      <div class="home-price">
+        <p>Price: <span>{{ home.price }}</span></p>
+      </div>
+      <div class="home-image">
+        <img src="{{ home.image.url }}" alt="" />
+        <a
+          href="{% url 'admin-home-detail' home.id  %}"
+          class="staff-content-link"
+          >View Detail
+        </a>
+      </div>
+    </div>
+
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "Eco_admin/staff.html" %} {% block content %}
+<div class="staff-blog-list-container">
+  <div class="staff-blog-list-wrapper">
+    <h1>Blogs</h1>
+    <div class="staff-blogs-list">
+      {% for blog in blogs %}
+      <div class="staff-blog-list">
+        <div class="staff-blog-list-image">
+          <img src="{{blog.image.url}}" alt="" />
+        </div>
+        <div class="staff-blog-list-content">
+          <h1>{{ blog.title }}</h1>
+          <p>Author: {{ blog.title }}</p>
+          <p>{{ blog.description }}</p>
+          <span>{{ blog.date_bloged }}</span>
+          <a
+            href="{% url 'admin-blog-detail' blog.id %}"
+            class="blod-detail-link"
+            >View Detail</a
+          >
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

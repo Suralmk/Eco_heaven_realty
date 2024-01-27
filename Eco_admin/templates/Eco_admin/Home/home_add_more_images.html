@@ -1,0 +1,32 @@
+{% extends "Eco_admin/staff.html" %} {% block content %}
+<div class="staff-home-create-container">
+  <h1>Add More Images to</h1>
+
+  <div class="staff-home-create-form-container">
+    <div class="show-uploaded-images"></div>
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+
+      <div class="input-field-home">
+        <label
+          class="staff-home-add-image-select"
+          id="home_image_select"
+          for="home_images"
+          >Coose Images</label
+        >
+        <input
+          type="file"
+          accept="image/*"
+          name="home_images"
+          id="home_images"
+          placeholder="Enter Price"
+          multiple
+          onchange=" showUploadedImages(event)"
+          hidden
+        />
+      </div>
+      <button type="submit">Add Images</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

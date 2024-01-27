@@ -1,0 +1,84 @@
+{% extends "Eco_app/base.html" %}{% load static %} {% block content %}
+<div class="homes-container">
+  <div class="homes-header-container">
+    <div class="homes-header">
+      <div class="homes-header-contents">
+        <h1>Our Amazing Properties</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus eaque
+          mollitia corporis esse doloribus, nesciunt quia inventore dignissimos
+          aperiam ipsum accusamus laboriosam iure adipisci tenetur aliquid,
+          saepe vitae asperiores porro.
+        </p>
+      </div>
+    </div>
+    <div class="homes-filter-container">
+      <div class="homes-filter">
+        <select style="width: 250px">
+          <option value="0">All</option>
+          <option value="0">For Sale</option>
+          <option value="1">For Rent</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!--view homes section-->
+  <section class="view-home">
+    <div class="view-homes-wrapper">
+      <h2>Explore Eco-friendly Homes Near You.</h2>
+      <ul class="homes-view-header-list">
+        <li><a href="#">New to market</a></li>
+        <li><a href="#">Nature Nearby</a></li>
+        <li><a href="#">Most viewed homes</a></li>
+      </ul>
+
+      <style>
+        .homes-view-header-list {
+          flex-wrap: wrap;
+        }
+      </style>
+      <div class="home-list-wrapper">
+        {% for home in homes %}
+        <div class="home-detail">
+          <div class="header-home-detail">
+            {% if home.price > 999 %}
+            <p>&#36;{{ home.price }}</p>
+            {% else %}
+            <p>&#36;{{ home.price }}</p>
+            {% endif %}
+
+            <a href="#">{{ home.home_type}}</a>
+          </div>
+          <div class="middle-home-detail">
+            <ul>
+              <li><p>{{home.beds_rooms}} beds</p></li>
+              <li><p>&middot;{{ home.bath_rooms }} baths</p></li>
+              <li><p>&middot;{{ home.sqft }} sqfts</p></li>
+              <li><p>&middot;Eco-friendlys</p></li>
+            </ul>
+            <p class="home-view-year">
+              <i class="ri-time-line"></i>{{ home.date_posted }}
+            </p>
+          </div>
+          <div class="home-image-view">
+            <img src="{{ home.image.url}}" alt="home image view" />
+          </div>
+          <div class="bottom-home-detail">
+            <a href="{% url 'home-detail' home.get_name_url home.id %}"
+              ><p>{{home.city_location}},{{ home.home_location }}</p></a
+            >
+            <a href="#"><i class="ri-heart-line heart"></i></a>
+          </div>
+        </div>
+        {% endfor %} {% if messages %}
+        <div class="home-search-info">
+          {% for message in messages %}
+          <p>{{message}}</p>
+          {% endfor %} {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+{%endblock %}
