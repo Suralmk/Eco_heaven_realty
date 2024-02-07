@@ -35,22 +35,23 @@
 
       <div class="input-field-home-flex">
         <div class="input-field-home">
+          <label for="bed_rooms">Bed Rooms</label>
+          <input
+            type="number"
+            name="bed_rooms"
+            id="bed_rooms"
+            placeholder="Enter Bed Rooms"
+            class="input"
+          />
+        </div>
+
+        <div class="input-field-home">
           <label for="bath_rooms">Bath Rooms</label>
           <input
             type="number"
             name="bath_rooms"
             id="bath_rooms"
             placeholder="Enter Number of Bath Rooms"
-            class="input"
-          />
-        </div>
-        <div class="input-field-home">
-          <label for="bed_rooms">Home Location</label>
-          <input
-            type="number"
-            name="bed_rooms"
-            id="bed_rooms"
-            placeholder="Enter Bed Rooms"
             class="input"
           />
         </div>
@@ -86,6 +87,18 @@
           <option value="For Rent">For Rent</option>
         </select>
       </div>
+
+      <div class="input-field-blog">
+        <label for="home_description">Home Desctiption</label>
+        <textarea
+          name="home_description"
+          id="home_description"
+          cols="30"
+          rows="10"
+          class="input"
+        ></textarea>
+      </div>
+
       <div class="show-uploaded-image">
         <img src="" alt="" id="uploaded-image-preview" />
       </div>

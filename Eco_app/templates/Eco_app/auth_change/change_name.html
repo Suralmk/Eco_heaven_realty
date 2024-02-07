@@ -1,0 +1,37 @@
+{% extends 'Eco_app/base.html' %} {% load static %} {% block content %}
+<div class="auth-update-container">
+  <h1>Edit Name</h1>
+  <p>Notice: This will be the new name used to contact you.</p>
+
+  <form method="POST" action="{% url 'change_name' %}" id="edit-name-form">
+    {% csrf_token %}
+    <div class="input-field">
+      <p class="auth-name-update">First Name</p>
+      <input
+        type="text"
+        id="new-first-name"
+        name="new-first-name"
+        placeholder="First Name"
+        class="input"
+        value="{{ user.first_name }}"
+      />
+      <p id="errormessage"></p>
+    </div>
+    <div class="input-field">
+      <p class="auth-name-update">Last Name</p>
+      <input
+        type="text"
+        id="new-last-name"
+        name="new-last-name"
+        placeholder="Last Name"
+        class="input"
+        value="{{ user.last_name }}"
+      />
+      <p id="errormessage"></p>
+    </div>
+    <div class="form-btn">
+      <button type="submit">Save</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

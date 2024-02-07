@@ -8,6 +8,7 @@
 
     <!-- <link rel="shortcut icon" type="image/svg" href="{% static 'src/base/logo-icon.svg'%}">-->
     <link rel="stylesheet" href="{% static 'css/style.css'%}" /> 
+    <link rel="stylesheet" href="{% static 'css/auth-update.css'%}" /> 
     <link rel="stylesheet" href="{% static 'css/base.css'%}" />
     <link rel="stylesheet" href="{% static 'css/homes.css'%}" />
     <link rel="stylesheet" href="{% static 'css/blogs.css'%}" />
@@ -20,8 +21,11 @@
     <script defer src="https://cdn.lordicon.com/bhenfmcm.js"></script>
     <script src="{% static 'js/base.js'%}" defer></script>
     <script src="{% static 'js/main.js'%}" defer></script>
+    <script src="{% static 'js/auth-update.js'%}" defer></script>
   </head>
   <body>
+
+
     <div class="nav-container">
       <div class="logo-container">
         <img src="{% static '/src/logo-icon.svg'%}" alt="svg" />
@@ -36,38 +40,12 @@
               ><i class="ri-arrow-up-s-line"></i
             ></a>
           </li>
-          <li>
-            <a href="#ctgry" class="nav-cateagory-btn"
-              >Cateagory&nbsp;<i class="ri-arrow-down-s-line"></i
-              ><i class="ri-arrow-up-s-line"></i
-            ></a>
-          </li>
+          
           <li><a href="{% url 'blog' %}">Blog</a></li>
-          <li><a href="#cus">ContuctUs</a></li>
+          <li><a href="/">ContuctUs</a></li>
         </ul>
       </nav>
 
-      <div class="company-drop-down-setting">
-        <div class="company-setting-header">
-          <p>Eco Heaven Realty</p>
-        </div>
-        <a href="">Our Mission</a>
-        <hr />
-        <a href="">Our Goals</a>
-        <hr />
-        <a href="{% url 'blog' %}">Blog</a>
-        <hr />
-        <a href="">News</a>
-      </div>
-
-      <div class="cateagory-drop-down-setting">
-        <div class="cateagory-setting-header">
-          <p>Option</p>
-        </div>
-        <a href="">For Rent</a>
-        <hr />
-        <a href="">For Rent</a>
-      </div>
 
       <div class="create-and-login">
         <a href="{% url 'login' %}"><button type="button">Login</button></a>
@@ -117,15 +95,15 @@
                 <p>{{request.user.first_name}}</p>
               </div>
 
-              <a class="open-email-modal" style="cursor: pointer"
+              <a href="{% url 'change_email' %}"
                 >Change Email</a
               >
               <hr />
-              <a class="open-username-modal" style="cursor: pointer"
-                >Change Username</a
+              <a href="{% url 'change_name' %}"
+                >Edit Name</a
               >
               <hr />
-              <a class="open-password-modal" style="cursor: pointer"
+              <a href="{% url 'change_password' %}"
                 >Change Password</a
               >
               <hr />
@@ -148,17 +126,15 @@
       </div>
       <nav class="nav-buttons" id="mobile-menu">
           <ul>
-              <li><a href="#hne">Home</a></li>
+              <li><a href="{% url 'index' %}">Home</a></li>
               <li><a href="{% url 'company' %}" class="nav-company-btn">Comapny&nbsp;<i class="ri-arrow-down-s-line"></i><i class="ri-arrow-up-s-line"></i></a>
               </li>
-              <li><a href="#ctgry" class="nav-cateagory-btn">Cateagory&nbsp;<i class="ri-arrow-down-s-line"></i><i class="ri-arrow-up-s-line"></i></a>
-              </li>
               <li><a href="{% url 'blog'  %}">Blog</a></li>
-              <li><a href="#cus">ContuctUs</a></li>
+              <li><a href="/">ContuctUs</a></li>
           </ul>
           <div class="create-and-login">
-              <a href="login/"><button type="button" >Login</button></a>
-              <a href="signup/"><button type="button" id="create-account-btn">Create an account</button></a>
+              <a href="{% url 'login' %}"><button type="button" >Login</button></a>
+              <a href="{% url 'signup' %}"><button type="button" id="create-account-btn">Create an account</button></a>
               <!-- <a href=""><i class="ri-menu-line" style="display: none;"></i></a>
               <a href=""><i class="ri-close-line" style="display: none;"></i></a> -->
           </div>
@@ -167,27 +143,6 @@
           <img src="{% static '/src/icons/menu-line.png' %}" alt="">
       </div>
 
-      <div class="company-drop-down-setting">
-          <div class="company-setting-header">
-              <p>Eco Heaven Realty</p>
-          </div>
-          <a href="">Our Mission</a>
-              <hr>
-              <a href="">Our Goals</a>
-              <hr>
-              <a href="">Blog</a>
-              <hr>
-              <a href="{% url 'staff' %}">News</a>
-      </div>
-
-      <div class="cateagory-drop-down-setting">
-          <div class="cateagory-setting-header">
-              <p>Option</p>
-          </div>
-              <a href="">For Rent</a>
-              <hr>
-              <a href="">For Rent</a>
-      </div>
       {% if request.user.is_authenticated %}
       <a href="" style="display: none;"><i class="ri-menu-line"></i></a>
       <a href="" style="display: none;"><i class="ri-close-line"></i></a>
@@ -211,11 +166,17 @@
                        <p>{{request.user.first_name}}</p>
                    </div>
                    
-                   <a  class="open-email-modal" style="cursor: pointer;" >Change Email</a>
-                   <hr>
-                   <a  class="open-username-modal"  style="cursor: pointer;" >Change Username</a>
-                   <hr>
-                   <a class="open-password-modal" style="cursor: pointer;">Change Password</a>
+                   <a href="{% url 'change_email' %}"
+                >Change Email</a
+              >
+              <hr />
+              <a href="{% url 'change_name' %}"
+                >Edit Name</a
+              >
+              <hr />
+              <a href="{% url 'change_password' %}"
+                >Change Password</a
+              >
                    <hr>
                    <a href="{% url 'logout' %}">Logout</a>
                </div>
@@ -225,12 +186,12 @@
       </div>
     {% endif %}
   </div>
-  <script>
 
+  <!-- Scroll to top btn -->
+  <div class="scroll-to-top-btn" >
+    <a class="scroll-btn" href="#"><i class="ri-arrow-up-s-line"></i></a>
+</div> 
 
-    
-
-</script>   
     <div class="middle-content">{% block content %} {% endblock %}</div>
 
 
@@ -245,33 +206,33 @@
               <li class="footer-logo"><a href=""><img src="{%static '/src/base/logo-icon.svg'%}" alt="">Eco Heaven Realty</a> </li>
                   <div class="social-links">
                        <ul>
-                           <li><a href=""><i class="ri-facebook-circle-fill"></i></a></li>
-                          <li><a href=""><i class="ri-linkedin-box-fill"></i></a></li>
-                          <li><a href=""><i class="ri-twitter-fill"></i></a></li>
-                          <li><a href=""><i class="ri-instagram-fill"></i></a></li>
+                           <li><a href="#"><i class="ri-facebook-circle-fill"></i></a></li>
+                          <li><a href="#"><i class="ri-linkedin-box-fill"></i></a></li>
+                          <li><a href="#"><i class="ri-twitter-fill"></i></a></li>
+                          <li><a href="#"><i class="ri-instagram-fill"></i></a></li>
                       </ul>
                   </div>
-              <li class="footer-contact-link"><a  href="">Contact Us</a></li>
+              <li class="footer-contact-link"><a  href="#schedule">Contact Us</a></li>
           </ul>
       </div>
 
           <div class="footer-links">
               <ul>
                   <li class="footer-titles">Navigation</li>
-                  <li><a href="">Company</a></li>
+                  <li><a href="{% url 'company' %}">Company</a></li>
                   <li><a href="{% url 'index' %}">Home</a></li>
                   <li><a href="#schedule">Contact Us</a></li>
                   <li><a href="{% url 'blog' %}">Blog</a></li>
-                  <li><a href="">Properties</a></li>
+                  <li><a href="{% url 'homes' %}">Properties</a></li>
               </ul>
           </div>
 
           <div class="footer-links">
               <ul>
                   <li class="footer-titles">Company</li>
-                  <li><a href="">About us</a></li>
-                  <li><a href="">Our mission and vision</a></li>
-                  <li><a href="/logout">Our team</a></li>
+                  <li><a href="{% url 'company' %}">About us</a></li>
+                  <li><a href="{% url 'company' %}">Our mission and vision</a></li>
+                  <li><a href="{% url 'logout' %}">Our team</a></li>
               </ul>
           </div>
 
@@ -280,7 +241,7 @@
                   <li class="footer-titles">Support</li>
                   <li><a href="#schedule">Contact us</a></li>
                   {% if not request.user.is_authenticated %}
-                  <li><a href="/login">Login</a></li>
+                  <li><a href="{% url 'login' %}">Login</a></li>
                   {% endif %}
               </ul>
       </div>

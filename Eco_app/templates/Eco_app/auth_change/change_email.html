@@ -1,0 +1,26 @@
+{% extends 'Eco_app/base.html' %} {% load static %} {% block content %}
+<div class="auth-update-container">
+  <h1>Change your Email address</h1>
+  <p>
+    Notice: Please use an active email adress so if you forgot your password you
+    will be able to reset it
+  </p>
+
+  <form method="POST" id="change-email-form">
+    {% csrf_token %}
+    <div class="input-field">
+      <input
+        type="email"
+        id="new-email"
+        name="new-email"
+        placeholder="Enter your new email"
+        class="input"
+      />
+      <p id="errormessage"></p>
+    </div>
+    <div class="form-btn">
+      <button type="submit">Change Email</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

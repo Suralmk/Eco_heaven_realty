@@ -117,12 +117,14 @@ def home_create(request):
         sqft = request.POST["sqft"]
         price = request.POST["price"]
         home_type = request.POST['home_type']
+        description = request.POST['home_description']
         image = request.FILES['image']
+
 
         try:
             home = Home.objects.create( city_location=city_location,home_location=home_location,
                                     home_type=home_type, bath_rooms=bath_rooms, beds_rooms=bed_rooms,
-                                    sqft=sqft, price=price, image=image
+                                    sqft=sqft, price=price,description=description, image=image
                                    )      
             home.save()
         except Exception as e:
@@ -326,16 +328,6 @@ def tour_requests_list(request):
     }
     return render(request,"Eco_admin/TourRequests/tour_requests_list.html", context )
 
-def tour_requests_detail(request):
-    if not request.user.is_authenticated:
-        return redirect ("not-found")
-    elif not request.user.is_staff:
-        return redirect("not-found")
-    
-    return render(request, "Eco_admin/TourRequests/tour_requests_detail.html" )
-
-
-
 def tour_requests_delete(request):
     if not request.user.is_authenticated:
         return redirect ("not-found")
@@ -360,22 +352,6 @@ def messages_list(request):
     }
     return render(request, "Eco_admin/Message/messages_list.html", context)
 
-def messages_detail(request):
-    if not request.user.is_authenticated:
-        return redirect ("not-found")
-    elif not request.user.is_staff:
-        return redirect("not-found")
-    
-    return render(request, "Eco_admin/Message/messages_detail.html")
-
-def messages_update(request):
-    if not request.user.is_authenticated:
-        return redirect ("not-found")
-    elif not request.user.is_staff:
-        return redirect("not-found")
-    
-    return render(request, "Eco_admin/Message/messages_update.html")
-
 def messages_delete(request):
     if not request.user.is_authenticated:
         return redirect ("not-found")
@@ -383,4 +359,3 @@ def messages_delete(request):
         return redirect("not-found")
     
     return render(request, "Eco_admin/Message/messages_update.html")
-12

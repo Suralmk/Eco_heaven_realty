@@ -73,5 +73,3 @@ def searched_homes(request):
 
 
 
-
-

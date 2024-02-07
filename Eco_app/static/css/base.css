@@ -48,13 +48,13 @@ li {
     background: #27563A;
 
 }
-.sticky{
+.stick{
     position: fixed;
-    z-index: 50;
     background: #27563aee;
     transition:  0.6s ease-in-out;
     box-shadow: rgba(0, 0, 0, 0.39) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
-}
+    z-index: 50;
+    }
 .logo-container{
     display: flex;
     align-items: center;
@@ -115,99 +115,10 @@ li {
     border: none;
 }
 
-/* nav buttons drop down*/
-.nav-buttons .ri-arrow-up-s-line{
-    display: none;
-}
-.nav-buttons .active-company-setting .ri-arrow-up-s-line{
-    display: block;
-}
-.nav-buttons .active-company-setting .ri-arrow-down-s-line{
-    display: none;
-}
 
-.nav-buttons .active-catagory-setting .ri-arrow-up-s-line{
-    display: block;
-}
-.nav-buttons .active-catagory-setting .ri-arrow-down-s-line{
-    display: none;
-}
 
-.company-drop-down-setting{
-    display: none;
-    position: absolute;
-    top: 84px;
-    height: auto;
-    width:auto;
-    padding: 10px;
-    background: rgb(255, 255, 255);
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
-.show-company-drop-down{
-    display: block;
-    left: 44%;
-}
 
-.company-setting-header{
-    width: 100%;
-    height: auto;
-    display: block;
-    padding: 10px;
-    background-color: rgba(57, 68, 12, 0.63);
-}
-.company-setting-header p {
-    color: white;
-    text-align: center;
-    font-size: 15px;
-    font-weight: bolder;
-}
-.company-drop-down-setting a{
-    display: block;
-    height: 20px;
-    margin: 10px 5px;
-    text-decoration: none;
-    color: black;
-}
-.company-drop-down-setting a:hover{
-    color: #0b6d23;
-}
-.cateagory-drop-down-setting{
-    display: none;
-    position: absolute;
-    top: 84px;
-    height: auto;
-    width:auto;
-    padding: 10px;
-    background: rgb(255, 255, 255);
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
-.show-catagory-drop-down{
-    display: block;
-    left:54.5%;
-}
-.cateagory-setting-header{
-    width: 100%;
-    height: auto;
-    display: block;
-    padding: 10px;
-    background-color: rgba(57, 68, 12, 0.63);
-}
-.cateagory-drop-down-setting p {
-    color: white;
-    text-align: center;
-    font-size: 15px;
-    font-weight: bolder;
-}
-.cateagory-drop-down-setting a{
-    display: block;
-    height: 20px;
-    margin: 10px 5px;
-    text-decoration: none;
-    color: black;
-}
-.cateagory-drop-down-setting a:hover{
-    color: #0b6d23;
-}
+
 /*authenticated user*/
 
 .user{
@@ -417,13 +328,7 @@ display: none;
 .mobile-nav-container .company-name{
 display: none;
 }
-.stick{
-position: fixed;
-background: #27563aee;
-transition:  0.6s ease-in-out;
-box-shadow: rgba(0, 0, 0, 0.39) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
-z-index: 50;
-}
+
 }
 
   
@@ -571,4 +476,38 @@ footer{
         flex-direction: column;
         gap: 30px;
     }
+}
+
+/*Sticy padding add*/
+ /* .stick + .index-container {
+    padding-top: 500px;
+} */
+/*scroll to top button style*/
+.scroll-to-top-btn{
+    width: 40px;
+    height: 50px;
+    position: fixed;
+    top: 90%;
+    right: 25px;
+    background: #275c41;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    border-radius: 10px;
+}
+.active-top-btn {
+    display: flex;
+}
+.active-top-btn a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+}
+.active-top-btn a i{
+    font-size: 30px;
+    color: rgb(255, 255, 255);
 }

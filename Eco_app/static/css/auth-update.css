@@ -1,0 +1,128 @@
+/*Auth update pages style */
+
+.auth-update-container,
+.auth-update-message-container {
+    height: 80vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+
+} 
+.auth-update-container p{
+    line-height: 25px;
+    text-align: justify;
+}
+.auth-update-container form {
+    width: 450px;
+    min-width: 340px;
+    padding: 20px;
+
+}
+.input-field{
+    width: 100%;
+    display: flex;
+    flex-direction: column; 
+    margin-bottom: 10px;
+}
+
+.input-field .input{
+    outline: none;
+    width: 100%;
+    height: 50px;
+    border-radius: 5px;
+    border: 1.5px solid #e6e1e1;
+    padding: 15px;
+    box-shadow:  #00000030 1px 0 1px, rgba(0, 0, 0, 0.23) 0px 1px 1px;
+    background: transparent;
+}
+
+
+.form-btn{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 30px;
+    width: 100%;
+}
+.form-btn button{
+    width: 100%;
+    border-style: hidden;
+    flex-shrink: 0;
+    border-radius: 5px;
+    background: #3f885c;
+    padding: 16px 0;
+    color: #FFF;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    outline: none;
+    cursor: pointer;
+    transition: transform 0.5s ease;
+    margin: 0;
+}
+.auth-name-update {
+    margin-bottom: 5px;
+    opacity: 0.8;
+    font-size: 14px;
+}
+
+.auth-update-message {
+    padding: 20px;
+    background: rgba(8, 97, 38, 0.63);
+    width: 100%;
+}
+.auth-update-message p {
+    color: white;
+}
+@media (max-width:750px){
+   .input-field {
+    margin-bottom: 25px;
+   }
+    .input-field .input{
+        width: 100%;
+        height: 40px;
+        border-radius: 3px;
+        padding: 10px 13px;
+        box-shadow:  none;
+
+    }
+    .input-field input:focus {
+        border: 2px solid #27563abb;
+    }
+    
+    .error .input{
+        border: 1.5px solid red;
+    }
+    .success .input{
+        border: 1.5px solid #3f885c;
+    }
+    .success p{
+        display: none;
+    }
+
+    .remember-me input{
+        margin-right: 4px;
+    }
+    .error p{ 
+        font-size: 10px;
+        margin-top: 3px;
+    }
+
+    .form-btn button{
+        border-radius: 3px;
+        padding: 13px 0;
+        font-size: 16px;
+        font-weight: 500;
+    }
+    .form-btn  {
+        margin-top: 20px;
+    }
+    .auth-update-container form, .auth-update-container h1, .auth-update-container p  {
+        width: 80%;
+    }
+}
+

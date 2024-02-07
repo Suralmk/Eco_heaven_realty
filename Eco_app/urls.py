@@ -17,9 +17,10 @@ urlpatterns = [
     path('reset-complete/', reset_complete, name='reset-complete'),
 
     # #Authenticated user profile urls
-    # # path('change-password/', views.change_password, name='change_password'),
-    # # path('change-email/', views.change_email, name='change_email'),
-    # # path('change-username/', views.change_username, name='change_username'),
+    path('change-password/', change_password, name='change_password'),
+    path('change-email/', change_email, name='change_email'),
+    path('edit-name/', change_name, name='change_name'),
+
 
     # # Searching a post every one can search
     # # no need to login, signup, be an admin

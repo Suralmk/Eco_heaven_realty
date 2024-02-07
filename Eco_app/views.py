@@ -5,6 +5,7 @@ from django.contrib.auth import get_user_model
 from Eco_home.models import Home
 from . models import CustomerContact
 import time, uuid
+from django.contrib.auth.decorators import login_required
 
 from . helpers import send_password_reset_email
 # from . models import ResetRequest
@@ -74,7 +75,7 @@ def signup(request):
         if first_name == "" or last_name == "" or email == "" or password == "" :
              messages.error(request, 'Please enter all the required fields!')   
         elif User.objects.filter(email=email).exists():
-            messages.success(request, 'Email was already Taken!')
+            messages.error(request, 'Email was already Taken!')
            
         else:
             #send welcome email here before regestering the user
@@ -90,7 +91,7 @@ def signup(request):
                                             last_name=last_name,
                                             password=password,
                                             email=email )
-            messages.info(request, 'Succesfully registered please login!')
+            messages.success(request, 'Succesfully registered please login!')
             return redirect("login")
       
     return render(request, 'Eco_app/signup.html')
@@ -102,7 +103,6 @@ def logout(request):
 
 
 # Password reset
-
 def reset_password(request):
     if request.method == 'POST':
         email = request.POST['email']
@@ -117,6 +117,8 @@ def reset_password(request):
 
                 # reset_request = Profile(forget_password_token = token, reset_email = email)
                 # profile_obj.save()
+                request.session['ps_token'] = token
+                
                 send_password_reset_email(email, token)
                 return redirect('email-sent')
                         
@@ -140,5 +142,53 @@ def reset_complete(request):
 
 def not_found(request):
      return render(request, "Eco_app/not_found.html")
+
+
+
+# Authentication update views
+@login_required
+def change_email (request):
+     if request.method == 'POST':
+          new_email = request.POST['new-email']
+
+          try:
+               new_user = User.objects.filter(email=request.user).update(email=new_email)
+               new_user.save()
+          except Exception as e:
+               print(e)
+
+     return render(request, 'Eco_app/auth_change/change_email.html')
+
+@login_required
+def change_name (request):
+     current_user = User.objects.get(email=request.user)
+     if request.method == 'POST':
+          new_first_name = request.POST['new-first-name']
+          new_last_name = request.POST['new-last-name']
+
+          try:
+               new_user = User.objects.filter(email=request.user).update(first_name=new_first_name, last_name=new_last_name)
+               new_user.save()
+               messages.success(request, "Name edited succesfully")
+          except Exception as e:
+               print(e)
+     
+
+     return render(request, 'Eco_app/auth_change/change_name.html', {"user": current_user})
+
+@login_required
+def change_password(request):
+     current_user = User.objects.get(email=request.user)
+     if request.method == 'POST':
+          new_password = request.POST['new-password']
+          try:
+               current_user.set_password(new_password)
+               current_user.save()
+               
+               
+          except Exception as e:
+               print(e)
+          
+     return render(request, 'Eco_app/auth_change/change_password.html')
 
 

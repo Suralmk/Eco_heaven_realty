@@ -23,6 +23,7 @@ class Home(models.Model):
     price = models.IntegerField('Home Price')
     image = models.ImageField(upload_to=home_directory_path)
     date_posted = models.DateTimeField(auto_now_add=True)
+    description = models.TextField(default="",max_length=2000)
 
     def __str__(self):
         return self.city_location + "  /  " + self.home_location

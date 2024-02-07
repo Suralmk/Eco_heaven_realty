@@ -51,11 +51,16 @@ INSTALLED_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     "allauth.socialaccount.providers.google",
+
+    'social_django',
+
+    
 ]
 
 SITE_ID = 1
 
 AUTH_USER_MODEL = "Eco_app.User"
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -66,6 +71,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# SESSION_ENGINE = ''
 ROOT_URLCONF = 'Eco_heaven_realty.urls'
 
 TEMPLATES = [
@@ -103,7 +109,9 @@ DATABASES = {
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend'
+    'allauth.account.auth_backends.AuthenticationBackend',
+
+    'social_core.backends.google.GoogleOAuth2',
 )
 
 # Password validation
@@ -154,8 +162,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Default authentication urls
 LOGIN_URL = "login"
 LOGIN_REDIRECT_URL = "index"
-LOGOUT_URL="logout" 
-LOGOUT_REDIRECT_URL="index"
+# LOGOUT_URL="logout" 
+# LOGOUT_REDIRECT_URL="index"
 
 # Email Settings
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
@@ -165,3 +173,11 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # client secret: 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
 
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
+
+SOCIAL_AUTH_JSONFIELD_ENABLED = True
+
+SOCIAL_AUTH_REQUIRE_POST = True
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '964788912820-mf0thb5dd7hadi4oodie15up4q4nu2nf.apps.googleusercontent.com' # Google Client ID
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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' # Google Client Secret

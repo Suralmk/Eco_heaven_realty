@@ -1362,3 +1362,107 @@ form{
 .change-username-container-active{
     display: none;
 }
+
+/*==============================
+        company page style
+===============================*/
+
+.company-container {
+    width: 100%;
+    height: auto;
+    background: white;
+}
+.company-wrapper {
+    padding: 72px;
+    max-width: 1350px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+.company-image {
+    width: 100%;
+    height: 450px;
+    
+
+}
+.company-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 20px;
+}
+.company-main-title {
+    font-size:40px ;
+    width: 100%;
+    text-align: center;
+    font-weight: bolder;
+}
+.company-title {
+    font-size: 30px;
+    display: flex;
+    flex-direction: column;
+    font-weight: lighter;
+}
+.company-title::after {
+    content: " ";
+    display: inline-flex;
+    background: #27563A;
+    height: 5px;
+    width: 100px;
+    margin-top: 20px;
+}
+.company-misstion-and-vision {
+    display: flex;
+    flex-direction: column;
+}
+.company-under-mv{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+.company-eco-mv{
+    width:47% ;
+    height: auto;
+    padding: 30px ;
+    background: rgba(128, 128, 128, 0.274);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 15px;
+}
+.company-eco-mv ul{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.company-eco-mv ul li {
+    list-style: inside;
+    line-height: 30px;
+}
+
+.company-our-team {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: auto;
+}
+.our-team-container {
+    display: flex;
+    gap: 40px;
+}
+.company-our-team-desc {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+.company-our-team-desc p {
+    text-align:justify;
+    line-height: 25px;
+}
+
+

@@ -17,21 +17,22 @@
     <div class="blog-detail-recent-blogs">
       <h2>Recent Blogs</h2>
       <div class="recent-blogs">
-        
-        {% for recent_blog in recent_blogs %}
+        {% for recent_blog in recent_blogs %} {% if forloop.counter < 5 %}
         <div class="recent-blog">
           <div class="recent-blog-image">
             <img src="{{ recent_blog.image.url }}" alt="" />
           </div>
 
           <div class="recent-blog-content">
-            <a href="{% url 'blog-detail' recent_blog.get_blog_url recent_blog.id  %}">{{ recent_blog.title }}</a>
+            <a
+              href="{% url 'blog-detail' recent_blog.get_blog_url recent_blog.id  %}"
+              >{{ recent_blog.title }}</a
+            >
             <p>Author: {{ recent_blog.author }}</p>
-            <span>{{ recent_blog.date_bloged }}/span>
+            <span>{{ recent_blog.date_bloged }}</span>
           </div>
         </div>
-        {% endfor %}
-        
+        {% endif %} {% endfor %}
       </div>
     </div>
   </div>

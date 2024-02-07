@@ -14,23 +14,31 @@ if (window.scrollY > 0) {
 }
 
 // Mobile Menu
+const topBtn = document.querySelector('.scroll-to-top-btn')
+const mobileNavBar = document.querySelector('.mobile-nav-container')
+const navBar = document.querySelector('.nav-container')
+
 const navHandler = () => {
-  navBar.classList.toggle('stick', this.window.scrollY > 100)
+  if (navBar) {
+    navBar.classList.toggle('stick', this.window.scrollY > 100)
+  }
+  if (mobileNavBar) {
+    mobileNavBar.classList.toggle('stick', this.window.scrollY > 100)
+  }
 }
-const navBar = document.querySelector('.mobile-nav-container')
-window.addEventListener('scroll', navHandler)
+
+const scrollToTopBtnHandler = () => {
+  topBtn.classList.toggle('active-top-btn', this.window.scrollY > 100)
+}
+
+window.addEventListener('scroll', () => {
+  navHandler()
+  scrollToTopBtnHandler()
+})
 
 function displayMobileMenu () {
   const menu = document.getElementById('mobile-menu')
   menu.classList.toggle('active')
-}
-
-//scroll to top page
-const topBtn = document.querySelector('.scroll-to-top-btn')
-if (window.pageYOffset > 100) {
-  topBtn.classList.add('active-top-btn')
-} else {
-  topBtn.classList.remove('active-top-btn')
 }
 
 //expandable content of  frequently asked questions
