@@ -1,42 +1,41 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 
-
 class UserManager(BaseUserManager):
-  def create_user (self, email, first_name, last_name, password=None, is_active=True, is_staff=False, is_admin=False):
+  def create_user (self, email, first_name=None, last_name=None, password=None, is_active=True, is_staff=False, is_admin=False):
       if not email:
           raise ValueError("User must have email")
-      if not password:
-          raise ValueError("User must have password")
-      if not first_name:
-          raise ValueError("User must have first_name")
-      if not last_name:
-          raise ValueError("User must have last_name")
+    #   if not password:
+    #       raise ValueError("User must have password")
+    #   if not first_name:
+    #       raise ValueError("User must have first_name")
+    #   if not last_name:
+    #       raise ValueError("User must have last_name")
 
       
 
       email = self.normalize_email(email)
       user = self.model( 
           email=email,
-          first_name=first_name,
-          last_name=last_name
       )
       user.set_password(password)
+      user.first_name=first_name
+      user.last_name=last_name
       user.active = is_active
       user.staff = is_staff
       user.admin = is_admin
       user.save()
       return user
   
-  def create_staffuser(self, email, first_name, last_name, password=None):
+  def create_staffuser(self, email, first_name=None, last_name=None, password=None):
       if not email:
           raise ValueError("User must have email")
       if not password:
           raise ValueError("User must have password")
-      if not first_name:
-          raise ValueError("User must have first_name")
-      if not last_name:
-          raise ValueError("User must have last_name")
+    #   if not first_name:
+    #       raise ValueError("User must have first_name")
+    #   if not last_name:
+    #       raise ValueError("User must have last_name")
       
       user = self.create_user(
           email, 
@@ -68,14 +67,14 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser, PermissionsMixin):
     email =   models.EmailField(unique=True, null=False, max_length=255, default=None)
-    first_name = models.CharField(max_length=150, null=False, default="")
-    last_name = models.CharField(max_length=150, null=False, default="")
+    first_name = models.CharField(max_length=150, blank=True, default="unknown")
+    last_name = models.CharField(max_length=150, blank=True, default="user")
     active =  models.BooleanField(default=True)
     staff = models.BooleanField(default=False)
     admin = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['first_name', "last_name"]
+    REQUIRED_FIELDS = []
     objects  = UserManager()
 
     def __str__(self):

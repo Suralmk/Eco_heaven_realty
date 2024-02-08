@@ -11,8 +11,8 @@ urlpatterns = [
     path('homes/', include('Eco_home.urls')),
     path('blogs/', include('Eco_blog.urls')),
 
-    path('accounts/', include('allauth.urls')),
-    path('socialaccounts', include('social_django.urls', namespace='social'))
+    # path('accounts/', include('allauth.urls')),
+    path('social-auth/', include('social_django.urls'))
     
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 

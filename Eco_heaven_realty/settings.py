@@ -29,7 +29,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
 
-ACCOUNT_USER_MODEL_USERNAME_FIELD = "email"
+# ACCOUNT_USER_MODEL_USERNAME_FIELD = "email"
 # Application definition
 
 INSTALLED_APPS = [
@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
-    "allauth.socialaccount.providers.google",
+    # "allauth.socialaccount.providers.google",
 
     'social_django',
 
@@ -69,6 +69,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 # SESSION_ENGINE = ''
@@ -85,6 +87,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
             ],
         },
     },
@@ -109,7 +112,7 @@ DATABASES = {
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',
+    # 'allauth.account.auth_backends.AuthenticationBackend',
 
     'social_core.backends.google.GoogleOAuth2',
 )
@@ -162,8 +165,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Default authentication urls
 LOGIN_URL = "login"
 LOGIN_REDIRECT_URL = "index"
-# LOGOUT_URL="logout" 
-# LOGOUT_REDIRECT_URL="index"
+LOGOUT_URL="logout" 
+LOGOUT_REDIRECT_URL="index"
 
 # Email Settings
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
@@ -173,11 +176,11 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # client secret: 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
 
-SOCIAL_AUTH_URL_NAMESPACE = 'social'
+# SOCIAL_AUTH_URL_NAMESPACE = 'social'
 
-SOCIAL_AUTH_JSONFIELD_ENABLED = True
+# SOCIAL_AUTH_JSONFIELD_ENABLED = True
 
-SOCIAL_AUTH_REQUIRE_POST = True
+# SOCIAL_AUTH_REQUIRE_POST = True
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '964788912820-mf0thb5dd7hadi4oodie15up4q4nu2nf.apps.googleusercontent.com' # Google Client ID
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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' # Google Client Secret
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '964788912820-mf0thb5dd7hadi4oodie15up4q4nu2nf.apps.googleusercontent.com' 
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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' 

@@ -13,7 +13,7 @@ urlpatterns = [
     # #password reset urls
     path('reset-password/', reset_password, name='reset_password'),
     path('email-sent/', email_sent_confirmation, name='email-sent'),
-    path('create-password/<slug:token>/', create_password, name='create-password'),
+    path('create-password/<uidb64>/<token>/', create_password, name='create-password'),
     path('reset-complete/', reset_complete, name='reset-complete'),
 
     # #Authenticated user profile urls

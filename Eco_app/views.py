@@ -7,7 +7,12 @@ from . models import CustomerContact
 import time, uuid
 from django.contrib.auth.decorators import login_required
 
-from . helpers import send_password_reset_email
+from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
+from django.utils.encoding import  force_str, smart_bytes, smart_str
+from django.contrib.sites.shortcuts import get_current_site
+from django.urls import reverse
+from django.contrib.auth.tokens import PasswordResetTokenGenerator
+from .helpers import Util
 # from . models import ResetRequest
 # Create your views here.
 User = get_user_model()
@@ -105,36 +110,44 @@ def logout(request):
 # Password reset
 def reset_password(request):
     if request.method == 'POST':
-        email = request.POST['email']
+          email = request.POST['email']
 
-        try:
-            if not  User.objects.filter(email = email).first():
-                messages.info(request, "Email not found!")
-                        
-            else:  
-                #create a token
-                token = str(uuid.uuid4())
-
-                # reset_request = Profile(forget_password_token = token, reset_email = email)
-                # profile_obj.save()
-                request.session['ps_token'] = token
-                
-                send_password_reset_email(email, token)
-                return redirect('email-sent')
-                        
-        except Exception as e:
-                print(e)
-
-        
+          if User.objects.filter(email=email).exists():
+               user=User.objects.get(email=email)
+               uidb64=urlsafe_base64_encode(smart_bytes(user.id))
+               token = PasswordResetTokenGenerator().make_token(user)
+               current_site = get_current_site(request=request).domain
+               relative_link = reverse('create-password', kwargs={'uidb64' : uidb64, 'token':token})
+               absurl = f'http://{current_site}{relative_link}'
+               email_body = f"Hello {user.first_name} \n\n Use this link bellow to reset your password \n {absurl}"
+               data = {
+                         'email_body' : email_body, 
+                         'to_email': user.email,
+                         'email_subject' : 'Password Reset Request'
+                         }
+               Util.send_email(data)
+               return redirect('email-sent')
+          else:
+               messages.error(request, "Email not found")
     return render( request, 'Eco_app/auth/reset_password.html')
 
 def email_sent_confirmation(request):
      
      return render(request, 'Eco_app/auth/email_sent_confirmation.html')
 
-def create_password(request, token):
+def create_password(request,uidb64, token):
+     if request.method == "GET":
+          try:
+               id = smart_str(urlsafe_base64_decode(uidb64))
+               user = User.objects.get(id=id)
+
+               if not PasswordResetTokenGenerator().check_token(user, token=token):
+                    return redirect('not-found')
+          except Exception as e:
+               return redirect("not-found")
      if request.method == "POST":
-          pass
+               password = request.POST['new-password']
+               print(password)
      return render(request, 'Eco_app/auth/create_new_password.html')
 
 def reset_complete(request):
