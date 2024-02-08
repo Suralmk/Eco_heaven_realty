@@ -14,7 +14,7 @@
                 {% csrf_token %}
                 <li><a href="#">For&nbsp;sale&nbsp;<i class="ri-arrow-down-s-line"></i></a></li>
                 <input type="text" name="searched" id="searched" placeholder="Enter an address or city">
-                <button class="search-bar-green-btn" type="submit" ><img src="{% static '/src/base/search-icon' %}" alt=""></button></a>
+                <button class="search-bar-green-btn" type="submit" ><i style="font-size: 20px;" class="ri-search-2-line"></i></button></a>
             </form>
         </div>
     </div>
@@ -97,7 +97,6 @@
               <a href="{% url 'home-detail' home.get_name_url home.id %}"
                 ><p>{{home.city_location}},{{ home.home_location }}</p></a
               >
-              <a href="#"><i class="ri-heart-line heart"></i></a>
             </div>
           </div>
           {% endif %}

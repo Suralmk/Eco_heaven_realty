@@ -5,7 +5,7 @@ from . models import Blog
 
 
 def blog(request):
-    blogs = Blog.objects.all()
+    blogs = Blog.objects.all().latest()
 
     context = {
         "blogs" : blogs
