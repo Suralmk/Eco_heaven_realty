@@ -3,9 +3,8 @@ from django.http import HttpResponse
 from . models import Blog
 # Create your views here.
 
-
 def blog(request):
-    blogs = Blog.objects.all().latest()
+    blogs = Blog.objects.all().order_by('-date_bloged')
 
     context = {
         "blogs" : blogs
@@ -15,7 +14,7 @@ def blog(request):
 def eco_blog_detail(request, blogname, id):
     blog =Blog.objects.filter(id=id).first()
     re_blog = []
-    recent_blogs = Blog.objects.all()
+    recent_blogs = Blog.objects.all().order_by('-date_bloged')
     for recent_blog in recent_blogs:
         if recent_blog.id != id:
             re_blog.append(recent_blog)
