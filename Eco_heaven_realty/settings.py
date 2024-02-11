@@ -48,12 +48,6 @@ INSTALLED_APPS = [
     "Eco_admin",
     "Eco_blog",
 
-
-    # "allauth",
-    # "allauth.account",
-    # "allauth.socialaccount",
-    # "allauth.socialaccount.providers.google",
-
     'social_django',
 
     
@@ -65,7 +59,6 @@ AUTH_USER_MODEL = "Eco_app.User"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    # 'whitenoise.middleware.WhiteNoiseMiddleWare',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -175,10 +168,6 @@ LOGIN_REDIRECT_URL = "index"
 LOGOUT_URL="logout"
 
 LOGOUT_REDIRECT_URL="index"
-
-# Email Settings
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
 
 # client id   : 964788912820-mf0thb5dd7hadi4oodie15up4q4nu2nf.apps.googleusercontent.com
 
