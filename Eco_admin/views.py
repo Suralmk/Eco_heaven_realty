@@ -5,6 +5,7 @@ from Eco_blog . models import Blog
 from django.contrib.auth import get_user_model
 from django.contrib import messages
 from Eco_app.models import CustomerContact
+from Eco_home.models import TourRequest
 
 # Create your views here.
 User = get_user_model()
@@ -80,12 +81,12 @@ def users_delete (request, id):
     
     user = User.objects.get(id=id)
 
-    if request.user.is_admin:
-        messages.error (request, f"{user.first_name} {user.last_name} id deleted")
-        user.delete()
+    if  user.is_staff or user.is_admin:
+        messages.error (request, "Staff members can not be deleted!")
         return redirect("users-list") 
     else:
-        messages.error (request, "you can Can not delete staff member! ")
+        messages.success (request, f"{user.first_name} {user.last_name} id deleted")
+        user.delete()
         return redirect("users-list")
 
 
@@ -328,13 +329,14 @@ def tour_requests_list(request):
     }
     return render(request,"Eco_admin/TourRequests/tour_requests_list.html", context )
 
-def tour_requests_delete(request):
+def tour_requests_delete(request, id):
     if not request.user.is_authenticated:
         return redirect ("not-found")
     elif not request.user.is_staff:
         return redirect("not-found")
     
-    return render(request, "Eco_admin/TourRequests/tour_requests_update.html" )
+    tour_request = TourRequest.objects.filter(id=id).delete()
+    return redirect("tour-requests-list")
 
 # Customer Contact Messages Views 
 def messages_list(request):
@@ -344,18 +346,17 @@ def messages_list(request):
         return redirect("not-found")
     
     contact_messages = CustomerContact.objects.all()
-
-
     
     context = {
         "contact_messages" : contact_messages
     }
     return render(request, "Eco_admin/Message/messages_list.html", context)
 
-def messages_delete(request):
+def messages_delete(request, id):
     if not request.user.is_authenticated:
         return redirect ("not-found")
     elif not request.user.is_staff:
         return redirect("not-found")
     
-    return render(request, "Eco_admin/Message/messages_update.html")
+    message = CustomerContact.objects.filter(id=id).delete()
+    return redirect("messages-list")

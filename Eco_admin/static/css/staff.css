@@ -22,6 +22,7 @@ a {
     padding: 72px;
     height: 100%;
     background: rgba(0, 0, 0, 0.064);
+    overflow-x: scroll;
 }
 .staff-menu-btn  {
     padding: 5px 15px;
@@ -221,53 +222,13 @@ a {
 }
 
 
-.staff-messages {
-    min-width: 320px;
-    max-width: 500px;
-    height: 150px;
-    background: white;
-    padding: 20px 20px;
-    box-shadow: rgba(36, 35, 35, 0.226) 0 0 15px;
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    border-radius: 20px;
-    animation: Message 0.5s ;
-    display: none;
-}
-
- .messages-show {
-    display: block;
-
-}
-
-@keyframes Message {
-    0% {
-        opacity: 0;
-
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
-.staff-error-alert {
+.staff-messages .error{
     width: 100%;
     height: auto;
-    padding: 15px;
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    background-color: rgba(241, 102, 102, 0.418);
+    background: rgba(248, 0, 0, 0.44);
+    padding: 20px;
     border: 1px solid red;
-}
-
-.staff-error-alert p {
-    color: rgb(255, 0, 0);
-    font-size: 15px;
-    font-weight: bold;
-    align-items: end;
-    display: flex;
-    gap: 10px;
+    color: white;
+    font-weight: bolder;
+    font-size: 18px;
 }

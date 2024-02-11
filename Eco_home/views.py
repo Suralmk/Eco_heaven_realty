@@ -6,7 +6,7 @@ from django.contrib import messages
 
 
 def homes(request):
-    homes = Home.objects.all().order_by("date_posted")
+    homes = Home.objects.all().order_by("-date_posted")
     context = {
         "homes" : homes
     }

@@ -9,6 +9,7 @@
       <th>Enquiry</th>
 
       <th>Message</th>
+      <th>Action</th>
     </tr>
 
     {% for contact_message in contact_messages %}
@@ -24,6 +25,9 @@
       <td>{{ contact_message.enquiry }}</td>
 
       <td>{{ contact_message.message }}</td>
+      <td>
+        <a href="{% url 'messages-delete' contact_message.id %}">delete</a>
+      </td>
     </tr>
     {% endfor %}
   </table>

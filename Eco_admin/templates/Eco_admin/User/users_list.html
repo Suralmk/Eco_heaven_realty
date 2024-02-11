@@ -2,9 +2,9 @@
 <div class="users-list-container">
   <h1>Users List</h1>
   <div class="staff-messages">
-    <p>message</p>
     {% for message in messages %}
-    <p>message {{ message }}</p>
+
+    <p class="{{ message.tags }}">{{ message }}</p>
     {% endfor %}
   </div>
   <div class="users-list-wrapper">

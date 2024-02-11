@@ -138,19 +138,30 @@ def email_sent_confirmation(request):
      return render(request, 'Eco_app/auth/email_sent_confirmation.html')
 
 def create_password(request,uidb64, token):
-     if request.method == "GET":
           try:
                id = smart_str(urlsafe_base64_decode(uidb64))
                user = User.objects.get(id=id)
 
                if not PasswordResetTokenGenerator().check_token(user, token=token):
                     return redirect('not-found')
+               
+
+               if request.method == "POST":
+                    new_password = request.POST["new-password"]
+                    confirm_password = request.POST["confirm-password"]
+
+                    print(new_password)
+                    if new_password != confirm_password:
+                         messages.error(request, "Password does not match!")
+
+                    user.set_password(new_password)
+                    user.save()
+                    return redirect("reset-complete")
+               
           except Exception as e:
-               return redirect("not-found")
-     if request.method == "POST":
-               password = request.POST['new-password']
-               print(password)
-     return render(request, 'Eco_app/auth/create_new_password.html')
+               #return redirect("not-found")
+               messages.error(request, "Error creating new password, please check!")
+          return render(request, 'Eco_app/auth/create_new_password.html')
 
 def reset_complete(request):
      return render(request, 'Eco_app/auth/reset_complete.html')

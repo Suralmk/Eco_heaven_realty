@@ -1,9 +1,13 @@
 {% extends "Eco_app/base.html" %}{% load static %} {% block content %}
 <div class="home-detail-container">
   <div class="homes-header">
-    <div class="homes-header-contents">
+    <div
+      class="home-detail-header-contents"
+      style="display: flex; flex-direction: column; gap: 10px"
+    >
       <h1>{{ home.city_location }}</h1>
       <p>{{ home.home_location}}</p>
+      <p>{{ home.date_posted }}</p>
     </div>
   </div>
 

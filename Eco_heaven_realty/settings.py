@@ -22,14 +22,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-uh&w7x!m3kyqu=9a(f&hbw8av1nnj4s#2uj6=f4@h01neva4vv'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config("DEBUG")
 
-ALLOWED_HOSTS = ["127.0.0.1", "localhost","192.168.246.77"]
+ALLOWED_HOSTS = ["127.0.0.1", "localhost","192.168.224.77", "192.168.246.77"]
 
-# ACCOUNT_USER_MODEL_USERNAME_FIELD = "email"
+ACCOUNT_USER_MODEL_USERNAME_FIELD = "email"
 # Application definition
 
 INSTALLED_APPS = [
@@ -102,18 +102,16 @@ WSGI_APPLICATION = 'Eco_heaven_realty.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Eco_Heaven',
-        'USER': 'postgres',
-        'PASSWORD': '14719859Aa$',
-        'HOST':'localhost',
-        'PORT':'5432',
+         'NAME': config('NAME'),
+        'USER': config('USER'),
+        'PASSWORD': config('PASSWORD'),
+        'HOST': config('HOST'),
+        'PORT':config('PORT'),
     }
 }
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
-    # 'allauth.account.auth_backends.AuthenticationBackend',
-
     'social_core.backends.google.GoogleOAuth2',
 )
 
@@ -163,24 +161,31 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Default authentication urls
+
 LOGIN_URL = "login"
+
 LOGIN_REDIRECT_URL = "index"
-LOGOUT_URL="logout" 
+
+LOGOUT_URL="logout"
+
 LOGOUT_REDIRECT_URL="index"
 
 # Email Settings
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
 # client id   : 964788912820-mf0thb5dd7hadi4oodie15up4q4nu2nf.apps.googleusercontent.com
 
 # client secret: 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
 
-# SOCIAL_AUTH_URL_NAMESPACE = 'social'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = config('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY') 
 
-# SOCIAL_AUTH_JSONFIELD_ENABLED = True
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = config('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET') 
 
-# SOCIAL_AUTH_REQUIRE_POST = True
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '964788912820-mf0thb5dd7hadi4oodie15up4q4nu2nf.apps.googleusercontent.com' 
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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' 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'ecoheavenrealty@gmail.com'
+EMAIL_HOST_PASSWORD = "lkuq xvuj afhj ztmt"

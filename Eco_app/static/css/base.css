@@ -132,7 +132,7 @@ li {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
 }
 .auth-user-nav button{
     border: 1px solid white;
@@ -147,7 +147,7 @@ li {
     cursor: pointer;
     transition: 0.6s;
 }
-.auth-user-nav #add-homes{
+.auth-user-nav #admin-setting{
     text-decoration: none;
     padding: 2px 2px;
     cursor: pointer;
@@ -155,12 +155,7 @@ li {
 
 }
 
-.auth-user-nav #add-homes i{
-    color: rgb(255, 255, 255);
-    font-size: 30px;
-    font-weight: 200;
-    line-height: 25px;
-}
+
 .user a {
     text-decoration: none;
     padding: 2px 2px;
@@ -197,6 +192,9 @@ li {
     height: 20px;
     margin: 10px 5px;
     text-decoration: none;
+    color: black;
+}
+.user-setting i {
     color: black;
 }
 .user-setting a:hover{
@@ -238,6 +236,7 @@ li {
     cursor: pointer;
     width: 40px;
     height: 35px;
+    margin-right: 10px;
 
 }
 .mobile-menu-icon img{
@@ -393,13 +392,14 @@ footer{
 }
 .social-links ul {
     display: flex;
+    flex-wrap: wrap;
     margin: 50px 0 60px 0;
 }
 .social-links ul li{
     margin: 0 10px;
 }
 .social-links ul li a{
-    padding: 15px;
+    padding: 5px;
     background-color: white;
     border-radius: 25px;
     text-decoration-line: none;
@@ -478,11 +478,6 @@ footer{
     }
 }
 
-/*Sticy padding add*/
- /* .stick + .index-container {
-    padding-top: 500px;
-} */
-/*scroll to top button style*/
 .scroll-to-top-btn{
     width: 40px;
     height: 50px;
@@ -510,4 +505,8 @@ footer{
 .active-top-btn a i{
     font-size: 30px;
     color: rgb(255, 255, 255);
+}
+
+.stick + .middle-content {
+    padding-top: 100px;
 }

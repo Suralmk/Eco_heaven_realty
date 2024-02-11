@@ -79,7 +79,13 @@
 .recent-blog-content span {
     font-size: 13px;
 }
-
+.text-description{
+    color: #313131;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 25px;
+    text-align: justify;
+}
 @media screen and (max-width:1000px) {
     .blog-detail-wrapper {
         flex-direction: column;
@@ -94,6 +100,12 @@
 @media screen and (max-width:750px) {
     .blog-detail-wrapper {
         padding: 72px 20px;
+    }
+    .blog-detail-content {
+        padding: 0;
+    }
+    .blog-detail {
+        box-shadow: none;
     }
     .blog-detail-content h1 {
         font-size: 25px;

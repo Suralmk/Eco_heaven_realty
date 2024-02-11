@@ -1,10 +1,11 @@
 .staff-messages-container{
     margin-top: 20px;
     padding: 10px;
-    background: white
+    background: white;
+    overflow-x: scroll;
 }
 .contact-message-table {
-    width: 100%;
+    width: 1160px;
     border-collapse:collapse;
     box-shadow: rgba(36, 35, 35, 0.426) 0 0 10px;
     border-radius: 15px;

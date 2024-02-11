@@ -30,6 +30,7 @@
 
 .blog {
     height: 450px;
+    width: 100%;
     background: white;
     border-radius: 10px;
     overflow: hidden;
@@ -46,6 +47,7 @@
 }
 
 .blog-content {
+    width: 100%;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -64,15 +66,29 @@
 }
 
 @media screen and  (max-width:750px){
-    .blog-list-wrapper {
-        padding: 72px 20px;
-    }
+
 
     .blog-list-header {
         align-items: start;
     }
     .blog-list-header p{
         text-align: justify;
+    }
+    .blog-list-wrapper {
+        padding: 72px 20px;
+    }
+    .blog-list {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+}
+
+@media screen and  (max-width:400px){
+    .blog-list {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+    .blog-list-wrapper {
+        padding: 72px 15px;
     }
 
 }

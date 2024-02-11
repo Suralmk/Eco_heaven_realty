@@ -12,7 +12,7 @@
         <div class="search-bar">
             <form action="{% url 'searched-homes' %}" method="GET" >
                 {% csrf_token %}
-                <li><a href="#">For&nbsp;sale&nbsp;<i class="ri-arrow-down-s-line"></i></a></li>
+                <li>Search</li>
                 <input type="text" name="searched" id="searched" placeholder="Enter an address or city">
                 <button class="search-bar-green-btn" type="submit" ><i style="font-size: 20px;" class="ri-search-2-line"></i></button></a>
             </form>
@@ -83,7 +83,7 @@
                 <li><p>&middot;Eco-friendlys</p></li>
               </ul>
               <p class="home-view-year">
-                <i class="ri-time-line"></i>2 years ago
+                <i class="ri-time-line"></i>{{ home.date_posted }}
               </p>
             </div>
             <div class="home-image-view">

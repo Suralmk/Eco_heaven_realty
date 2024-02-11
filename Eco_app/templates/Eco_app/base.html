@@ -45,25 +45,9 @@
       </nav>
 
 
-      <div class="create-and-login">
-        <a href="{% url 'login' %}"><button type="button">Login</button></a>
-        <a href="{% url 'signup' %}"
-          ><button type="button" id="create-account-btn">
-            Create an account
-          </button></a
-        >
-        <a href=""><i class="ri-menu-line" style="display: none"></i></a>
-        <a href=""><i class="ri-close-line" style="display: none"></i></a>
-      </div>
+     
 
       {% if request.user.is_authenticated %}
-      <a href="" style="display: none"><i class="ri-menu-line"></i></a>
-      <a href="" style="display: none"><i class="ri-close-line"></i></a>
-      <style>
-        .create-and-login {
-          display: none;
-        }
-      </style>
       <div class="user-container">
         <div class="auth-user-nav">
           <li>
@@ -71,10 +55,10 @@
           </li>
           {% if request.user.is_staff %}
           <li>
-            <a style="display: flex; align-items: center" target="_blank" id="add-homes" href="{%  url 'staff' %}"
+            <a style="display: flex; align-items: center" target="_blank" id="admin-setting" href="{%  url 'staff' %}"
               ><img
                 style="width: 35px"
-                src="{% static '/src/icons/pngegg.png' %}"
+                src="{% static '/src/icons/admin-setting.png' %}"
                 alt=""
             /></a>
           </li>
@@ -84,7 +68,7 @@
               <a style="display: block"
                 ><img
                   style="width: 35px; height: auto; padding: 0.1rem"
-                  src="{% static '/src/icons/profile.png' %}"
+                  src="{% static '/src/icons/user.png' %}"
                   alt=""
               /></a>
             </div>
@@ -94,11 +78,11 @@
               </div>
 
               <a href="{% url 'change_email' %}"
-                >Change Email</a
+                > Change Email</a
               >
               <hr />
               <a href="{% url 'change_name' %}"
-                >Edit Name</a
+                ><i class="ri-edit-line"></i>Edit Name</a
               >
               <hr />
               <a href="{% url 'change_password' %}"
@@ -109,6 +93,15 @@
             </div>
           </div>
         </div>
+      </div>
+      {%  else %}
+      <div class="create-and-login">
+        <a href="{% url 'login' %}"><button type="button">Login</button></a>
+        <a href="{% url 'signup' %}"
+          ><button type="button" id="create-account-btn">
+            Create an account
+          </button></a
+        >
       </div>
       {% endif %}
     </div>
@@ -125,51 +118,42 @@
       <nav class="nav-buttons" id="mobile-menu">
           <ul>
               <li><a href="{% url 'index' %}">Home</a></li>
-              <li><a href="{% url 'company' %}" class="nav-company-btn">Comapny&nbsp;<i class="ri-arrow-down-s-line"></i><i class="ri-arrow-up-s-line"></i></a>
+              <li><a href="{% url 'company' %}" class="nav-company-btn">Comapny</a>
               </li>
               <li><a href="{% url 'blog'  %}">Blog</a></li>
               <li><a href="/">ContuctUs</a></li>
           </ul>
-          <div class="create-and-login">
-              <a href="{% url 'login' %}"><button type="button" >Login</button></a>
-              <a href="{% url 'signup' %}"><button type="button" id="create-account-btn">Create an account</button></a>
-              <!-- <a href=""><i class="ri-menu-line" style="display: none;"></i></a>
-              <a href=""><i class="ri-close-line" style="display: none;"></i></a> -->
-          </div>
+         {% if not request.user.is_authenticated %}
+         <div class="create-and-login">
+          <a href="{% url 'login' %}"><button type="button" >Login</button></a>
+          <a href="{% url 'signup' %}"><button type="button" id="create-account-btn">Create an account</button></a>
+        </div>
+         {% endif %}
       </nav>
       <div class="mobile-menu-icon" onclick="displayMobileMenu()">
           <img src="{% static '/src/icons/menu-line.png' %}" alt="">
       </div>
 
       {% if request.user.is_authenticated %}
-      <a href="" style="display: none;"><i class="ri-menu-line"></i></a>
-      <a href="" style="display: none;"><i class="ri-close-line"></i></a>
-      <style>
-            .mobile-nav-container  .create-and-login{
-                  display: none;
-              }  
-      </style>
       <div class="user-container">
           <div class="auth-user-nav">
-              <!-- <li> <a href="homes/"><button type="button" >Browse Home</button></a></li> -->
                {% if request.user.is_staff %}
-              <li> <a style="display: flex; align-items: center;" target="_blank" id="add-homes" href="{% url 'staff' %}"><img style="width: 35px;" src="{% static '/src/icons/pngegg.png' %}" alt=""></a></li>
+              <li> <a style="display: flex; align-items: center;" target="_blank" id="add-homes" href="{% url 'staff' %}"><img style="width: 35px;" src="{% static '/src/icons/admin-setting.png' %}" alt=""></a></li>
                {% endif %}
-
                <li class="dropdown">
                 <div class="user" style="display: flex ; gap: 10px;">
-               <a  style="display: block;"><img style="width: 35px; height:auto; padding: 0.1rem; " src="{% static '/src/icons/profile.png' %}" alt=""></a></div>
+               <a  style="display: block;"><img style="width: 35px; height:auto; padding: 0.1rem; " src="{% static '/src/icons/user.png' %}" alt=""></a></div>
                   <div class="user-setting">
                    <div class="usersetting-username">
                        <p>{{request.user.first_name}}</p>
                    </div>
                    
                    <a href="{% url 'change_email' %}"
-                >Change Email</a
+                ><i class="ri-mail-line"></i>Change Email</a
               >
               <hr />
               <a href="{% url 'change_name' %}"
-                >Edit Name</a
+                ><i class="ri-edit-line"></i>Edit Name</a
               >
               <hr />
               <a href="{% url 'change_password' %}"
@@ -179,7 +163,6 @@
                    <a href="{% url 'logout' %}">Logout</a>
                </div>
                </li>
-               
            </div>
       </div>
     {% endif %}

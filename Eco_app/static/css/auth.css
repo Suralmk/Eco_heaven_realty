@@ -229,6 +229,9 @@ textarea {
 }
 
 @media (max-width:750px){
+    .auth-right-wrapper form {
+        padding: 20px;
+    }
     .flex-inputs {
         flex-direction: column;
         gap: 0;

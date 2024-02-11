@@ -117,9 +117,6 @@ body{
 /*  Media Queries for hero-container*/
      
 @media screen and (max-width:1100px) {
-
-    /* Hero Section */
-
     .hero{
         max-width: 1150px;
     }
@@ -127,95 +124,10 @@ body{
     font-size: 50px;
     font-weight: 700;
     }
-    /* who-we-are*/
-    .who-we-are-wrapper{
-        padding: 72px 30px 72px 30px;
-    }
-    .describe-text h2{
-        color: #08110C;
-        font-size: 25px;
-    }
-    .describe-text a{
-        padding: 8px 17px;
-        font-size: 12px;
-        line-height: 15px;
-    }
-    /*Our mission*/
-    .mission-wrapper{
-        padding: 72px 30px 72px 30px;
-    }
-    /* View Homes */
-    .view-homes-wrapper{
-        padding: 72px 30px 72px 30px;
-    }
-    .home-list-wrapper{
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        grid-row-gap: 15px;
-    }
-
-    /*Benefit of eco*/
-    .benefit-of-eco-wrapper{
-        padding: 72px 30px 72px 30px;
-        
-    }
-    .benefit-header h2{
-        font-size: 25px;
-    }
 
 }
 
-@media screen  and (max-width:1000px){
-     /* who-we-are*/
-     .who-we-are {
-        height: auto;
-     }
-     .who-we-are-wrapper{
-        flex-direction: column;
-        height: auto;
-        align-items: center;
-    }
-    .who-we-are-wrapper img{
-        width: 100%;
-    }
-    .describe-text h2{
-        color: #08110C;
-        font-size: 25px;
-    }
-    .describe-text a{
-        padding: 8px 17px;
-        font-size: 12px;
-        line-height: 15px;
-    }
-    /*Our mission*/
-    .our-mission{
-    height: auto;
-    }
-    .mission-wrapper{
-        flex-direction: column;
-       height: auto;
-       align-items: center;
-    }
-    .mission-wrapper img{
-        width: 100%;
-    }
-    /* View Homes */
-    .view-homes-wrapper{
-        padding: 72px 30px 72px 30px;
-    }
-    .home-list-wrapper{
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        grid-row-gap: 15px;
-    }
 
-    /*Benefit of eco*/
-    .benefit-of-eco-wrapper{
-        padding: 72px 30px 72px 30px;
-        
-    }
-    .benefit-header h2{
-        font-size: 25px;
-    }
-}
 @media screen and (max-width: 750px) {
 .hero h1 {
     font-size: 40px;
@@ -238,10 +150,10 @@ body{
     margin-right: 10px;
 
 }
-.search-bar form li{
-   background: rgb(155, 148, 148);
-   padding: 0;
 
+
+.search-bar li, .search-bar-green-btn {
+    padding: 20px 15px;
 }
 
 
@@ -319,7 +231,7 @@ body{
 @media screen and (max-width:1100px) {
     /* who-we-are*/
     .who-we-are-wrapper{
-        padding: 72px 30px 72px 30px;
+        padding:  72px 20px;
     }
     .describe-text h2{
         color: #08110C;
@@ -382,7 +294,7 @@ body{
 @media screen and (max-width:1100px) {
     /*Our mission*/
     .mission-wrapper{
-        padding: 72px 30px 72px 30px;
+        padding: 72px 20px;
     }
 
 }
@@ -564,7 +476,7 @@ body{
 @media screen and (max-width:1100px) {
     /* View Homes */
     .view-homes-wrapper{
-        padding: 72px 30px 72px 30px;
+        padding:  72px 20px;
     }
     .home-list-wrapper{
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -585,7 +497,7 @@ body{
 @media screen  and (max-width:1000px){
     /* View Homes */
     .view-homes-wrapper{
-        padding: 72px 30px 72px 30px;
+        padding:  72px 20px;
     }
     .home-list-wrapper{
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -687,7 +599,7 @@ body{
 @media screen and (max-width:1100px) {
     /*Benefit of eco*/
     .benefit-of-eco-wrapper{
-        padding: 72px 30px 72px 30px;
+        padding:  72px 20px;
         
     }
     .benefit-header h2{
@@ -957,7 +869,7 @@ body{
     .common-questions-wrapper {
         display: flex;
         flex-direction: column;
-        padding: 72px 30px;
+        padding: 72px 20px;
     }
 }
 
@@ -1003,10 +915,10 @@ body{
 }
 
 #errormessage{ 
-    color: rgba(180, 11, 11, 0.753);
+    color: rgb(255, 0, 0);
     font-size: 15px;
     margin-top: 5px;
-    font-weight: lighter;
+    font-weight: normal;
 }
 .customer-name-phone{
     width: auto;
@@ -1213,7 +1125,7 @@ form button{
 @media screen and (max-width:1050px) {
     /*Find your eco wrapper*/
     .find-your-eco-wrapper {
-        padding: 72px 30px;
+        padding: 72px 20px;
     }
     .find-your-eco-container {
         height: auto;
@@ -1362,7 +1274,7 @@ form{
 .change-username-container-active{
     display: none;
 }
-
+.text-description
 /*==============================
         company page style
 ===============================*/
@@ -1383,8 +1295,6 @@ form{
 .company-image {
     width: 100%;
     height: 450px;
-    
-
 }
 .company-image img {
     width: 100%;
@@ -1459,10 +1369,61 @@ form{
     align-items: center;
     justify-content: center;
     gap: 20px;
+    margin-top: 30px;
 }
 .company-our-team-desc p {
     text-align:justify;
     line-height: 25px;
 }
+.company-our-team-image {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.company-our-team-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media screen and (max-width:1050px) {
+    /*Find your eco wrapper*/
+    .company-wrapper{
+        padding: 72px 20px;
+    }
+    .our-team-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .company-image {
+        height: auto;
+    }
+    .company-image img {
+        border-radius: 15px;
+    }
 
 
+}
+@media screen and (max-width:900px) {
+    /*Find your eco wrapper*/
+    .company-under-mv {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .company-eco-mv {
+        width: 100%;
+    }
+    .company-title {
+        font-weight: bold;
+    }
+}
+
+
+@media screen and (max-width:750px) {
+    button {
+        font-weight:bold;
+    }
+}

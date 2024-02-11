@@ -46,7 +46,11 @@
         </div>
       </div>
 
-      <div class="action-container"><a href="">Delete this request</a></div>
+      <div class="action-container">
+        <a href="{% url  'tour-requests-delete' request.id %}"
+          >Delete this request</a
+        >
+      </div>
     </div>
     {% endfor %}
   </div>

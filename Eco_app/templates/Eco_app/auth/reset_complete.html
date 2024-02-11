@@ -42,31 +42,10 @@
           </p>
         </div>
         {% for message in messages %}
-        <div
-          class=""
-          style="
-            width: 50%;
-            height: auto;
-            padding: 15px;
-            justify-content: center;
-            display: flex;
-            align-items: center;
-            background-color: rgba(241, 102, 102, 0.418);
-            border: 1px solid red;
-          "
-        >
-          <p
-            style="
-              color: rgb(255, 0, 0);
-              font-size: 15px;
-              font-weight: bold;
-              align-items: end;
-              display: flex;
-              gap: 10px;
-            "
-          >
+        <div class="message-{{ message.tags }}">
+          <p>
             <img src="{% static 'src/images/icons/alert-fill.png' %}" alt="" />
-            {{message}}
+            {{message}} {{ message.tags }}
           </p>
         </div>
         {% endfor %}

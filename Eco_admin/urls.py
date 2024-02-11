@@ -31,11 +31,9 @@ urlpatterns = [
 
       # Tour Rewquests Urls
       path('tour-requests/', tour_requests_list, name="tour-requests-list"),
-      path('tour-requests/<int:id>/', tour_requests_delete, name="tour-requests-detail"),
       path('tour-requests/<int:id>/delete/', tour_requests_delete, name="tour-requests-delete"),
  
       # Messages Urls 
       path('messages/', messages_list, name="messages-list"),
-      path('messages/<int:id>/', messages_delete, name="messages-detail"),
       path('messages/<int:id>/delete/', messages_delete, name="messages-delete"),
 ]
