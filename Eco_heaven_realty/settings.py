@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
-from decouple import config
+from decouple import config, Csv
 import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -28,7 +28,8 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config("DEBUG")
 
-ALLOWED_HOSTS = ["127.0.0.1", "localhost","192.168.224.77", "192.168.246.77"]
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
+
 
 ACCOUNT_USER_MODEL_USERNAME_FIELD = "email"
 # Application definition
