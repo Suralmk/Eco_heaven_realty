@@ -43,7 +43,10 @@ form.addEventListener('submit', e => {
 const validateReservationInputs = () => {
   full_name_value = full_name.value.trim()
   phone_no_value = phone_no.value.trim()
-  date_value = date.value.trim()
+  date_value = new Date(date.value.trim())
+  console.log(date_value)
+
+  var currentDate = new Date()
 
   if (full_name_value === '' || full_name_value === null) {
     setError(full_name, "Full name can't be empty!")
@@ -53,6 +56,9 @@ const validateReservationInputs = () => {
     return false
   } else if (date_value === '' || date_value === null) {
     setError(date, "Date can't be empty!")
+    return false
+  } else if (date_value < currentDate) {
+    setError(date, 'Date has already passed!')
     return false
   } else {
     return true
