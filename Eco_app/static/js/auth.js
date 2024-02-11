@@ -54,37 +54,20 @@ function signupValidation () {
         'This field is required!'
       input[i].classList.remove('valid')
       valid = false
-    }
-    // } else if (input[i].name === 'email') {
-    //   if (!trueEmail(input[i].value)) {
-    //     input[i].classList.add('invalid')
-    //     input[i].parentElement.querySelector('#errormessage').innerHTML =
-    //       'enter a valid email!'
-    //     input[i].classList.remove('valid')
-    //   }
-    //   valid = false
-    // }
-    // else if (input[i].name === 'password') {
-    //   if (input[i].value.length < 8) {
-    //     input[i].classList.add('invalid')
-    //     input[i].parentElement.querySelector('#errormessage').innerHTML =
-    //       'Password must not be less than 8 cahrachter'
-    //     input[i].classList.remove('valid')
-    //   }
-    //   valid = false
-    // }
-    else {
+    } else if (input[i].name === 'password') {
+      if (input[i].value.length < 8) {
+        input[i].classList.add('invalid')
+        input[i].parentElement.querySelector('#errormessage').innerHTML =
+          'Password must not be less than 8 cahrachter'
+        input[i].classList.remove('valid')
+        valid = false
+      }
+    } else {
       input[i].classList.add('valid')
       input[i].classList.remove('invalid')
     }
   }
   return valid // return the valid status
-}
-
-function trueEmail (email) {
-  return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
-    email
-  )
 }
 
 // Reset Password validation
