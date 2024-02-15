@@ -5,4 +5,4 @@ sqlparse==0.4.3
 tzdata==2022.7
 gunicorn==21.2.0
 social-auth-app-django==5.4.0
-decouple==0.0.7
+python-decouple==3.8
