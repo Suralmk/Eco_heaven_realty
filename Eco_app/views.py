@@ -17,7 +17,6 @@ from .helpers import Util
 # Create your views here.
 User = get_user_model()
 
-from reportlab.pdfgen import canvas
 
 def company (request):
      return render (request, "Eco_app/company.html")
