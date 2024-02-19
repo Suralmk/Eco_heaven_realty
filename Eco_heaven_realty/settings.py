@@ -42,15 +42,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-
     "Eco_app",
     "Eco_home",
     "Eco_admin",
     "Eco_blog",
-
-    'social_django',
-
-    
+    'social_django'
 ]
 
 SITE_ID = 1
