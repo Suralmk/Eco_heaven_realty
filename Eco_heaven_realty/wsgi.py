@@ -10,9 +10,9 @@ https://docs.djangoproject.com/en/4.1/howto/deployment/wsgi/
 import os
 
 from django.core.wsgi import get_wsgi_application
-from django.contrib.auth import get_user_model
 from decouple import config
-User = get_user_model()
+from django.contrib.auth.models import User
+
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Eco_heaven_realty.settings')
 
 application = get_wsgi_application()
