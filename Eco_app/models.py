@@ -45,7 +45,7 @@ class UserManager(BaseUserManager):
           is_staff=True
       )
       return user
-  def create_superuser(self, email, first_name ,last_name,password=None): 
+  def create_superuser(self, email, first_name=None ,last_name=None, password=None): 
       if not email:
           raise ValueError("User must have email")
       if not password:
