@@ -59,17 +59,3 @@ def searched_homes(request):
         "homes" : homes
     }
     return render(request, "Eco_home/homes.html", context)
-
-
-# def post_search(request):
-#     form = SearchForm()
-#     if 'query' in request.GET:
-#     form = SearchForm(request.GET)
-#     if form.is_valid():
-#         cd = form.cleaned_data
-#     results = SearchQuerySet().models(Post).filter(content=cd['query']).load_all()
- 
-#  # count total results
-
-
-
