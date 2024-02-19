@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from django.contrib.auth.models import User
+from Eco_app.models import User
 from decouple import config
 class Command(BaseCommand):
     help = 'Automatically creates a superuser'
