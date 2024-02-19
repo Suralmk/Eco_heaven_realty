@@ -50,10 +50,6 @@ class UserManager(BaseUserManager):
           raise ValueError("User must have email")
       if not password:
           raise ValueError("User must have password")
-      if not first_name:
-          raise ValueError("User must have first_name")
-      if not last_name:
-          raise ValueError("User must have last_name")
       
       user = self.create_user(
           email,
